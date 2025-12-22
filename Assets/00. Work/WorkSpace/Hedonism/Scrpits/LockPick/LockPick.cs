@@ -85,7 +85,6 @@ namespace PBG_01_LockPick
 
             pickAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             pick.rotation = Quaternion.Euler(0, 0, pickAngle);
-            Debug.Log(pickAngle);
         }
 
         // 실린더 회전 시도
