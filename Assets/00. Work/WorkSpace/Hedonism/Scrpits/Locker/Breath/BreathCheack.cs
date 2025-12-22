@@ -23,7 +23,5 @@ public class BreathCheck : MonoBehaviour
         // HitZone 생성
         GameObject hitZone = Instantiate(hitZonePrefab, spawnPos, Quaternion.identity);
         hitZone.transform.parent = halfCircleBar;
-
-        Debug.Log("HitZone spawned at: " + spawnPos + " | Angle: " + angle);
     }
 }

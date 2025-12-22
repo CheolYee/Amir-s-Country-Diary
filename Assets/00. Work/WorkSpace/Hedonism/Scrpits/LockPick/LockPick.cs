@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
-using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -42,7 +41,6 @@ namespace PBG_01_LockPick
 
         void Start()
         {
-            Debug.Log($"[LockPick] Initialized. Target angle will be set on activation.");
             // Start에서는 비활성화하지 않음 (MoveRoom에서 처리)
 
             // 내구도 초기화
@@ -98,7 +96,6 @@ namespace PBG_01_LockPick
             float rotateRatio = Mathf.Clamp01(1 - angleDiff / tolerance);
 
             float maxRotate = rotateRatio * unlockAngle;
-            Debug.Log(rotateRatio);
 
             currentRotate = Mathf.Lerp(currentRotate, maxRotate, Time.deltaTime * rotateSpeed);
             lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
@@ -140,7 +137,6 @@ namespace PBG_01_LockPick
             noiseEmitter.Begin();
             isUnlocked = true;
             StartCoroutine(RotateToUnlock());
-            Debug.Log("잠금 해제 성공!");
             OnUnlocked?.Invoke();
         }
 

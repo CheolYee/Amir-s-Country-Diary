@@ -58,7 +58,7 @@ namespace PBG_01_Locker
         void OnEnable()
         {
             success = 0;
-            touchCount = UnityEngine.Random.Range(3, 5);
+            touchCount = Random.Range(3, 5);
         }
 
 
