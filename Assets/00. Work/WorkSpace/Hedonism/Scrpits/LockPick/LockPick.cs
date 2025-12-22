@@ -146,6 +146,7 @@ namespace PBG_01_LockPick
         public void ShowLockPick()
         {
             this.gameObject.SetActive(true);
+            enabled = true;
         }
 
         private IEnumerator RotateToUnlock()
