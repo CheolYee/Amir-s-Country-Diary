@@ -41,7 +41,6 @@ namespace PBG_01_Locker
             isPlayer = false;
             player.SetActive(true);
             BreathCheack.SetActive(false);
-
         }
 
         private void InLockerFalse()
@@ -49,9 +48,6 @@ namespace PBG_01_Locker
             inLocker = true;
             ShowGimic();
             player.SetActive(false);
-            breathBar.swingSpeed = 100;
-            judgment.success = 0;
-            judgment.touchCount = Random.Range(3, 5);
         }
 
         private void OnTriggerStay2D(Collider2D collision)
