@@ -7,7 +7,7 @@ public class BreathCheck : MonoBehaviour
 
     void Start()
     {
-        SpawnHitZone();
+        
     }
 
     public void SpawnHitZone()
@@ -17,7 +17,7 @@ public class BreathCheck : MonoBehaviour
         float radius = sr.bounds.size.x / 2f;
 
         // 반원의 각도를 랜덤 선택 (-90 ~ 90)
-        float angle = Random.Range(-90f, 90f);
+        float angle = Random.Range(180f, 0f);
         float rad = angle * Mathf.Deg2Rad;
 
         // 반원의 중심 기준 테두리 좌표 계산
