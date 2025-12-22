@@ -99,7 +99,7 @@ public class LockPick : MonoBehaviour
         isUnlocked = true;
         currentRotate = unlockAngle;
 
-        currentRotate = Mathf.Lerp(currentRotate, unlockAngle, Time.deltaTime * rotateSpeed);
+        currentRotate = Mathf.Lerp(currentRotate, unlockAngle, Time.deltaTime);
         lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
 
         Debug.Log("잠금 해제 성공!");
