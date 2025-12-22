@@ -32,7 +32,7 @@ namespace PBG_01_LockPick
         [SerializeField] private NoiseEmitter _noiseEmitter;
 
         [SerializeField] private Camera cam;
-        
+
         public Action OnUnlocked;
 
         void Awake()
@@ -44,7 +44,7 @@ namespace PBG_01_LockPick
         {
             Debug.Log($"[LockPick] Initialized. Target angle will be set on activation.");
             // Start에서는 비활성화하지 않음 (MoveRoom에서 처리)
-    
+
             // 내구도 초기화
             pickDurability = 100f;
         }
@@ -127,9 +127,10 @@ namespace PBG_01_LockPick
                 this.gameObject.SetActive(false);
 
             }
-            else if(pickDurability <= 50 && pickDurability >= 49)
+
+            if (pickDurability <= 50)
             {
-                cam.DOShakePosition(2, 2, 0);
+                cam.transform.DOShakePosition(2, 3, 10);
             }
         }
 
@@ -175,7 +176,5 @@ namespace PBG_01_LockPick
 
             this.gameObject.SetActive(false);
         }
-
-        //TODO : 락핏 언락 했을 때 확 돌아가는거 수정하기
     }
 }

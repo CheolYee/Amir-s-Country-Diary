@@ -1016,6 +1016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LockPit
       objectReference: {fileID: 0}
+    - target: {fileID: 7302590596202720366, guid: d6f7f7cbf1139af44ac7befff7527459, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1258379717}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1295,6 +1299,11 @@ MonoBehaviour:
   decayDelayAfterNoise: 0.8
   decayPerSecBase: 0.05
   decayPerSecWhileLoud: 0.02
+--- !u!20 &1258379717 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 405174222323144594, guid: 2b3dea5cefc28224d9d798074d0c0610, type: 3}
+  m_PrefabInstance: {fileID: 6051205066559496753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1367771889
 GameObject:
   m_ObjectHideFlags: 0
