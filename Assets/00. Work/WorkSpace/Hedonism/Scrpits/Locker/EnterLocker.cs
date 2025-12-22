@@ -45,6 +45,7 @@ namespace PBG_01_Locker
 
         private void InLockerFalse()
         {
+            isPlayer = true;
             inLocker = true;
             ShowGimic();
             player.SetActive(false);
@@ -56,6 +57,14 @@ namespace PBG_01_Locker
             {
                 isPlayer = true;
                 player = collision.gameObject;
+            }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                if(!inLocker)
+                    isPlayer = false;
             }
         }
 
