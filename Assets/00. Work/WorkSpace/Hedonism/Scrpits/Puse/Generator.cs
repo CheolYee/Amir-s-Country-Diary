@@ -47,9 +47,9 @@ namespace PBG_01_PUSE
             inventory.PuseCount.RemoveAt(0);
         }
 
-        private void PuseIsNull()
+        private void ShowUI()
         {
-
+            
         }
     }
 }

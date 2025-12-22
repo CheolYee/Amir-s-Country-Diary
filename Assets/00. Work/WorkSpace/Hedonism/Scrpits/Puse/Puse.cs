@@ -27,4 +27,9 @@ public class Puse : MonoBehaviour
             isPlayer = true;
         }
     }
+
+    private void ShowUI()
+    {
+
+    }
 }

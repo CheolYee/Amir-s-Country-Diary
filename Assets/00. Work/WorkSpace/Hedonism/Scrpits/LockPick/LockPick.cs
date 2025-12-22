@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -11,7 +12,7 @@ namespace PBG_01_LockPick
 
         [Header("계산")]
         [SerializeField] private float tolerance = 15f;    // 허용 오차
-        [SerializeField] private float unlockAngle = 90f;  // 완전히 열리는 각도
+        [SerializeField] private float unlockAngle = 180f;  // 완전히 열리는 각도
         [SerializeField] private float rotateSpeed = 5f;   // 실린더 반응 속도
 
         [Header("기회")]
@@ -99,13 +100,37 @@ namespace PBG_01_LockPick
 
         void Unlock()
         {
+            if (isUnlocked) return;
             isUnlocked = true;
-            currentRotate = unlockAngle;
-
-            currentRotate = Mathf.Lerp(currentRotate, unlockAngle, Time.deltaTime);
-            lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
-
+            StartCoroutine(RotateToUnlock());
             Debug.Log("잠금 해제 성공!");
         }
+
+        private IEnumerator RotateToUnlock()
+        {
+            float duration = 1f; // 몇 초 동안 회전할지
+            float elapsed = 0f;
+
+            float startRotate = currentRotate;
+            float endRotate = unlockAngle;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                t = Mathf.SmoothStep(0f, 1f, t); // 부드럽게
+
+                currentRotate = Mathf.Lerp(startRotate, endRotate, t);
+                lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
+
+                yield return null;
+            }
+
+            // 정확히 목표값으로
+            currentRotate = endRotate;
+            lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
+        }
+
+        //TODO : 락핏 언락 했을 때 확 돌아가는거 수정하기
     }
 }
