@@ -1907,6 +1907,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 122155464343431221, guid: 2b3dea5cefc28224d9d798074d0c0610, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 122155464343431221, guid: 2b3dea5cefc28224d9d798074d0c0610, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765434726126946626, guid: 2b3dea5cefc28224d9d798074d0c0610, type: 3}
+      propertyPath: TargetOffset.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765434726126946626, guid: 2b3dea5cefc28224d9d798074d0c0610, type: 3}
+      propertyPath: Composition.ScreenPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350129166297944964, guid: 2b3dea5cefc28224d9d798074d0c0610, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350129166297944964, guid: 2b3dea5cefc28224d9d798074d0c0610, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.53
+      objectReference: {fileID: 0}
     - target: {fileID: 5953392898440255108, guid: 2b3dea5cefc28224d9d798074d0c0610, type: 3}
       propertyPath: m_Name
       value: All Cameras
