@@ -930,10 +930,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LockPit
       objectReference: {fileID: 0}
+    - target: {fileID: 7302590596202720366, guid: d6f7f7cbf1139af44ac7befff7527459, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1038476097}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4944784022575754185, guid: d6f7f7cbf1139af44ac7befff7527459, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: d6f7f7cbf1139af44ac7befff7527459, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
