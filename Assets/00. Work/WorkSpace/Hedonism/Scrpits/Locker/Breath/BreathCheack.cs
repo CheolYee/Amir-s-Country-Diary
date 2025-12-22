@@ -5,10 +5,6 @@ public class BreathCheck : MonoBehaviour
     public Transform halfCircleBar;      // 반원 중심
     public GameObject hitZonePrefab;     // 판정 칸 Prefab
 
-    void Start()
-    {
-        
-    }
 
     public void SpawnHitZone()
     {
