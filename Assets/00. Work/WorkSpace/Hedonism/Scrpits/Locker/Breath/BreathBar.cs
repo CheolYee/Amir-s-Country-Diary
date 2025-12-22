@@ -10,6 +10,12 @@ namespace PBG_01_Breath
         public float maxAngle = 90f; // 반구 최대 각도
 
         private bool goingRight = true;
+        private Transform clone;
+
+        void Awake()
+        {
+            clone = GetComponentInChildren<Transform>();
+        }
 
         void Update()
         {
@@ -38,6 +44,18 @@ namespace PBG_01_Breath
             }
 
             blackBar.localEulerAngles = new Vector3(0, 0, angle);
+        }
+
+        void OnEnable()
+        {
+            swingSpeed = 100;
+        }
+
+        void OnDisable()
+        {
+            var child = this.transform.GetChild(0).gameObject;
+            if (child.CompareTag("Judgment"))
+                Destroy(child);
         }
     }
 
