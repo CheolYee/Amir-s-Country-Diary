@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 namespace PBG_01_LockPick
@@ -29,6 +31,8 @@ namespace PBG_01_LockPick
         private NoiseEmitter noiseEmitter;
 
         [SerializeField] private Camera cam;
+        
+        public Action OnUnlocked;
 
         void Awake()
         {
@@ -37,11 +41,13 @@ namespace PBG_01_LockPick
 
         void Start()
         {
-            // 정답 각도 랜덤 설정
-            // targetAngle = Random.Range(180f, 0f);
-            Debug.Log($"[LockPick] Target Angle: {targetAngle}");
-            this.gameObject.SetActive(false);
+            Debug.Log($"[LockPick] Initialized. Target angle will be set on activation.");
+            // Start에서는 비활성화하지 않음 (MoveRoom에서 처리)
+    
+            // 내구도 초기화
+            pickDurability = 100f;
         }
+
 
         void Update()
         {
@@ -133,6 +139,7 @@ namespace PBG_01_LockPick
             isUnlocked = true;
             StartCoroutine(RotateToUnlock());
             Debug.Log("잠금 해제 성공!");
+            OnUnlocked?.Invoke();
         }
 
         public void ShowLockPick()
