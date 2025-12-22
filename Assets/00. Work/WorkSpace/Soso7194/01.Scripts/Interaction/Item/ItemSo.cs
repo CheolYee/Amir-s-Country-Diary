@@ -13,10 +13,10 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Item
     [CreateAssetMenu(fileName = "Item", menuName = "SO/Item", order = 0)]
     public class ItemSo : ScriptableObject
     {
-        [SerializeField] private ItemType itemType;
-        [SerializeField] private string itemName;
-        [SerializeField] private Sprite itemSprite;
-        [SerializeField] private int itemValue;
-        [SerializeField] private string itemTooltip;
+        public ItemType itemType;
+        public string itemName;
+        public Sprite itemSprite;
+        public int itemValue;
+        public string itemTooltip;
     }
 }

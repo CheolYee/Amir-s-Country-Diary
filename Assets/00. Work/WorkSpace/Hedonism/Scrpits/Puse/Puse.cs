@@ -1,35 +1,49 @@
-using PBG_01_PUSE;
 using UnityEngine;
+using _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Item;
+using PBG_01_PUSE;
+using _00._Work.Resources._02._Codes.Utils;
 
 public class Puse : MonoBehaviour
 {
-    [SerializeField] private Inventory inventory;
-    [SerializeField] private bool isPlayer = false;
-    [SerializeField] private GameObject puse;
-    void Update()
+    [Header("Settings")]
+    [SerializeField] private InputSo inputSo;
+    [SerializeField] private ItemSo itemData;
+
+    private bool canPickup = false;
+
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (inputSo != null) inputSo.OnInteractionKeyPressed += HandleInteraction;
+    }
+
+    private void OnDisable()
+    {
+        if (inputSo != null) inputSo.OnInteractionKeyPressed -= HandleInteraction;
+    }
+
+    private void HandleInteraction()
+    {
+        if (canPickup && Inventory.Instance != null)
         {
-            if (isPlayer)
+            if (Inventory.Instance.AddItem(itemData))
             {
-                inventory.PuseCount.Add(puse);
-                Debug.Log("퓨즈 획득");
-                puse.SetActive(false);
-                isPlayer = false;
+                Debug.Log($"{itemData.itemName} 획득!");
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("인벤토리가 가득 찼습니다.");
             }
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Puse"))
-        {
-            puse = collision.gameObject;
-            isPlayer = true;
-        }
+        if (collision.CompareTag("Player")) canPickup = true;
     }
 
-    private void ShowUI()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-
+        if (collision.CompareTag("Player")) canPickup = false;
     }
 }

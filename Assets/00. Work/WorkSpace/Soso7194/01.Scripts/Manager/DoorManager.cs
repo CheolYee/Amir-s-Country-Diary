@@ -1,81 +1,55 @@
 ﻿using _00._Work.Resources._02._Codes.Utils;
+using _00._Work.Resources._04._Templates.FadeManager;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Manager
 {
     public class DoorManager : MonoSingleton<DoorManager>
     {
-        [Header("Data Storage")]
-        public Vector3 lastWorldPosition; // 되돌아올 위치
-        public string lastWorldSceneName; // 되돌아올 씬 이름
-        public int targetRoomIndex = -1; // 이동할 방 번호
-        public bool isReturning = false; // 복귀 중인지 여부
+        [Header("Position Data")]
+        public Vector3 lastWorldPosition; // 원래 있던 위치 저장
 
-        protected override void Awake()
+        // 1. 문으로 들어갈 때 호출
+        public void EnterRoom(GameObject player, int roomIndex)
         {
-            base.Awake(); // 부모의 중복 체크 로직 실행
- 
-            if (Instance == this)
+            // 페이드 매니저에게 "어두워지면(콜백) 이동시켜줘"라고 요청
+            FadeManager.Instance.FadeIn(() => 
             {
-                DontDestroyOnLoad(gameObject);
-            }
+                // 1. 현재 위치(밖) 저장
+                lastWorldPosition = player.transform.position;
+
+                // 2. 방 위치 찾기
+                RoomSpawnPoints points = FindFirstObjectByType<RoomSpawnPoints>();
+                if (points != null && points.spawnPoints.Length > roomIndex)
+                {
+                    TeleportPlayer(player, points.spawnPoints[roomIndex].position);
+                }
+                else
+                {
+                    Debug.LogError($"방 인덱스 {roomIndex}를 찾을 수 없습니다.");
+                }
+
+                // 3. 이동 끝났으니 화면 밝히기
+                FadeManager.Instance.FadeOut();
+            });
         }
 
-        private void OnEnable()
+        // 2. 문에서 나올 때 호출
+        public void ExitRoom(GameObject player)
         {
-            if (Instance == this) 
-                SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        private void OnDisable()
-        {
-            if (Instance == this)
-              SceneManager.sceneLoaded -= OnSceneLoaded;
-        }
-
-        // 씬 로드가 완료되면 호출
-        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player == null) return;
-
-            // 1. 방으로 들어갈 때
-            if (targetRoomIndex != -1 && !isReturning)
+            FadeManager.Instance.FadeIn(() =>
             {
-                TeleportToRoomIndex(player);
-            }
-            // 2. 밖으로 나갈 때
-            else if (isReturning)
-            {
-                TeleportToOriginalPosition(player);
-            }
+                // 1. 저장해둔 원래 위치로 이동
+                TeleportPlayer(player, lastWorldPosition);
+
+                // 2. 화면 밝히기
+                FadeManager.Instance.FadeOut();
+            });
         }
 
-        // 방 씬의 특정 인덱스로 이동
-        void TeleportToRoomIndex(GameObject player)
-        {
-            // 방 씬에 배치된 RoomSpawnPoints 찾기
-            RoomSpawnPoints points = FindFirstObjectByType<RoomSpawnPoints>();
-        
-            if (points != null && points.spawnPoints.Length > targetRoomIndex)
-            {
-                TeleportPlayer(player, points.spawnPoints[targetRoomIndex].position);
-            }
-        
-            targetRoomIndex = -1; // 이동 후 초기화
-        }
-
-        // 원래 있던 월드 위치로 이동
-        void TeleportToOriginalPosition(GameObject player)
-        {
-            TeleportPlayer(player, lastWorldPosition);
-            isReturning = false;
-        }
-
-        // 2D 물리 간섭 방지 이동 로직
-        void TeleportPlayer(GameObject player, Vector3 position)
+        // 물리 오류 방지 텔레포트 함수
+        private void TeleportPlayer(GameObject player, Vector3 targetPos)
         {
             Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
             bool wasSimulated = false;
@@ -83,11 +57,11 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Manager
             if (rb != null)
             {
                 wasSimulated = rb.simulated;
-                rb.simulated = false; // 물리 연산 잠시 끄기
-                rb.linearVelocity = Vector2.zero; // 이동 관성 제거 (Unity 6 이상, 구버전은 .velocity)
+                rb.simulated = false; // 물리 연산 끄기
+                rb.linearVelocity = Vector2.zero; // 관성 제거
             }
 
-            player.transform.position = position;
+            player.transform.position = targetPos;
 
             if (rb != null)
             {
