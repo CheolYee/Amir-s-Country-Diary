@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,8 +12,12 @@ namespace _00._Work.Resources._02._Codes.Utils
         
         public Vector2 MoveInput {get; private set;}
         public Vector2 MousePosition {get; private set;}
-        public event Action OnAttackKeyPressed;
-        public event Action OnJumpKeyPressed;
+        public event Action OnRunKeyPressed;
+        public event Action OnSpaceKeyPressed;
+        public event Action OnInteractionKeyPressed;
+        public event Action OnInventory_1KeyPressed;
+        public event Action OnInventory_2KeyPressed;
+        public event Action OnInventory_3KeyPressed;
         
         private void OnEnable()
         {
@@ -35,21 +40,57 @@ namespace _00._Work.Resources._02._Codes.Utils
             MoveInput = context.ReadValue<Vector2>();
         }
 
-        public void OnAttack(InputAction.CallbackContext context)
+        public void OnSpace(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnAttackKeyPressed?.Invoke();
-        }
-
-        public void OnJump(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-                OnJumpKeyPressed?.Invoke();
+            {
+                OnSpaceKeyPressed?.Invoke();
+            }
         }
 
         public void OnAim(InputAction.CallbackContext context)
         {
             MousePosition = context.ReadValue<Vector2>();
+        }
+
+        public void OnRun(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnRunKeyPressed?.Invoke();
+            }
+        }
+
+        public void OnInteraction(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnInteractionKeyPressed?.Invoke();
+            }
+        }
+
+        public void OnInventory_1(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnInventory_1KeyPressed?.Invoke();
+            }
+        }
+
+        public void OnInventory_2(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnInventory_2KeyPressed?.Invoke();
+            }
+        }
+
+        public void OnInventory_3(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnInventory_3KeyPressed?.Invoke();
+            }
         }
     }
 }
