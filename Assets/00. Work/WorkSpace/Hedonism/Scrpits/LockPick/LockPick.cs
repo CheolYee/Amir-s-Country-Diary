@@ -1,4 +1,5 @@
 using System.Collections;
+using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
 using UnityEngine;
 
 
@@ -27,8 +28,9 @@ namespace PBG_01_LockPick
         void Start()
         {
             // 정답 각도 랜덤 설정
-            targetAngle = Random.Range(180f, 0f);
+            // targetAngle = Random.Range(180f, 0f);
             Debug.Log($"[LockPick] Target Angle: {targetAngle}");
+            this.gameObject.SetActive(false);
         }
 
         void Update()
@@ -48,6 +50,16 @@ namespace PBG_01_LockPick
                 currentRotate = Mathf.Lerp(currentRotate, 0f, Time.deltaTime * rotateSpeed);
                 lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
             }
+        }
+
+        private void OnEnable()
+        {
+            targetAngle = Random.Range(180f, 0f);
+        }
+
+        private void OnDisable()
+        {
+            isUnlocked = false;
         }
 
         // 락픽 회전
@@ -93,7 +105,7 @@ namespace PBG_01_LockPick
 
             if (pickDurability <= 0f)
             {
-                Debug.Log("락픽이 부러졌습니다!");
+                //경보음 울리기
                 enabled = false; // 미니게임 종료
             }
         }
@@ -104,6 +116,11 @@ namespace PBG_01_LockPick
             isUnlocked = true;
             StartCoroutine(RotateToUnlock());
             Debug.Log("잠금 해제 성공!");
+        }
+
+        private void ShowLockPick()
+        {
+            this.gameObject.SetActive(true);
         }
 
         private IEnumerator RotateToUnlock()
@@ -129,6 +146,8 @@ namespace PBG_01_LockPick
             // 정확히 목표값으로
             currentRotate = endRotate;
             lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
+
+            this.gameObject.SetActive(false);
         }
 
         //TODO : 락핏 언락 했을 때 확 돌아가는거 수정하기
