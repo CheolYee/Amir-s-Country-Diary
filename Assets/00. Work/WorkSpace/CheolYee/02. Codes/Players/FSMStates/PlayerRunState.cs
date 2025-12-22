@@ -38,7 +38,7 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.Players.FSMStates
                 return;
             }
 
-            if (_stamina != null && !_stamina.CanRun)
+            if (_stamina != null && !_stamina.CanRun || Player.PlayerInput.RunKeyPressed == false)
             {
                 Player.ChangeState(PlayerStates.WALK);
             }
