@@ -2,19 +2,19 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Camera
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Item
+  - Ground
+  - PP_UI
   - 
   - 
   - 
@@ -41,3 +41,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 1025466481
+    locked: 0
+  - name: Buttom
+    uniqueID: 2409423801
+    locked: 0
+  - name: Middle
+    uniqueID: 2283088787
+    locked: 0
+  - name: Top
+    uniqueID: 1409648299
+    locked: 0
+  - name: UI
+    uniqueID: 3586580111
+    locked: 0
+  m_RenderingLayers:
+  - Default

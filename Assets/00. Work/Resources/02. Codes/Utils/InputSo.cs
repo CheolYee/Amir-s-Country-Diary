@@ -12,12 +12,12 @@ namespace _00._Work.Resources._02._Codes.Utils
         
         public Vector2 MoveInput {get; private set;}
         public Vector2 MousePosition {get; private set;}
-        public event Action OnRunKeyPressed;
+        public bool RunKeyPressed {get; private set;}
         public event Action OnSpaceKeyPressed;
         public event Action OnInteractionKeyPressed;
-        public event Action OnInventory_1KeyPressed;
-        public event Action OnInventory_2KeyPressed;
-        public event Action OnInventory_3KeyPressed;
+        public event Action OnInventory1KeyPressed;
+        public event Action OnInventory2KeyPressed;
+        public event Action OnInventory3KeyPressed;
         
         private void OnEnable()
         {
@@ -57,7 +57,11 @@ namespace _00._Work.Resources._02._Codes.Utils
         {
             if (context.performed)
             {
-                OnRunKeyPressed?.Invoke();
+                RunKeyPressed = true;
+            }
+            else if (context.canceled)
+            {
+                RunKeyPressed = false;
             }
         }
 
@@ -73,7 +77,7 @@ namespace _00._Work.Resources._02._Codes.Utils
         {
             if (context.performed)
             {
-                OnInventory_1KeyPressed?.Invoke();
+                OnInventory1KeyPressed?.Invoke();
             }
         }
 
@@ -81,7 +85,7 @@ namespace _00._Work.Resources._02._Codes.Utils
         {
             if (context.performed)
             {
-                OnInventory_2KeyPressed?.Invoke();
+                OnInventory2KeyPressed?.Invoke();
             }
         }
 
@@ -89,7 +93,7 @@ namespace _00._Work.Resources._02._Codes.Utils
         {
             if (context.performed)
             {
-                OnInventory_3KeyPressed?.Invoke();
+                OnInventory3KeyPressed?.Invoke();
             }
         }
     }
