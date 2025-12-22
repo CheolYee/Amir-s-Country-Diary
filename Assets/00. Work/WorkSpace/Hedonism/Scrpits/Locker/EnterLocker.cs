@@ -39,27 +39,10 @@ namespace PBG_01_Locker
                 }
             }
         }
-        void LateUpdate()
-        {
-            if (locked)
-                target.position = lockedPos;
-        }
-
-        public void Lock()
-        {
-            lockedPos = target.position;
-            locked = true;
-        }
-
-        public void Unlock()
-        {
-            locked = false;
-        }
 
 
         private void InLockerTrue()
         {
-            Unlock();
             inLocker = false;
             isPlayer = false;
             player.SetActive(true);
@@ -68,7 +51,6 @@ namespace PBG_01_Locker
 
         private void InLockerFalse()
         {
-            Lock();
             isPlayer = true;
             inLocker = true;
             ShowGimic();

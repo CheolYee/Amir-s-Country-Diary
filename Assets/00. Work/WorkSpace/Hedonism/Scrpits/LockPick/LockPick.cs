@@ -1,4 +1,5 @@
 using System.Collections;
+using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
 using DG.Tweening;
 using UnityEngine;
@@ -25,8 +26,14 @@ namespace PBG_01_LockPick
         private float pickAngle;       // 현재 락픽 각도
         private float currentRotate;   // 현재 실린더 회전값
         private bool isUnlocked;
+        private NoiseEmitter noiseEmitter;
 
         [SerializeField] private Camera cam;
+
+        void Awake()
+        {
+            noiseEmitter = GetComponentInChildren<NoiseEmitter>();
+        }
 
         void Start()
         {
@@ -122,12 +129,13 @@ namespace PBG_01_LockPick
         void Unlock()
         {
             if (isUnlocked) return;
+            noiseEmitter.Begin();
             isUnlocked = true;
             StartCoroutine(RotateToUnlock());
             Debug.Log("잠금 해제 성공!");
         }
 
-        private void ShowLockPick()
+        public void ShowLockPick()
         {
             this.gameObject.SetActive(true);
         }
