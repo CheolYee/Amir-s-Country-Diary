@@ -10,21 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30fee5b4ad2a40f2ba6bd410f2ef0afa, type: 3}
-  m_Name: Player Run Noise
+  m_Name: LockerNoise
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 67719eee80ac7d54cb25d615998e8a06, type: 3}
-  - {fileID: 8300000, guid: 2b9dbbbe1b88d794d85aa833a90bace7, type: 3}
-  - {fileID: 8300000, guid: 7dbe1e85ec38dde418b863f5a00e485f, type: 3}
-  - {fileID: 8300000, guid: 91a9b2cf4799d664d870db74e500699b, type: 3}
+  - {fileID: 8300000, guid: e7556eda130b2fe41a57c99783078977, type: 3}
   clipSelectMode: 0
   avoidImmediateRepeat: 1
   loop: 0
-  pulseInterval: 0.2
+  pulseInterval: 0.35
   loudness: 1
   maxRange: 12
   halfDistance: 5
-  type: 2
-  tag: 4
-  uiGainMultiplier: 0.2
+  type: 0
+  tag: 1
+  uiGainMultiplier: 1
   cameraGainMultiplier: 1

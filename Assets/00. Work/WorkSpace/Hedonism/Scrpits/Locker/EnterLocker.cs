@@ -1,3 +1,4 @@
+using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
 using PBG_01_Breath;
 using UnityEngine;
 
@@ -9,18 +10,22 @@ namespace PBG_01_Locker
         [SerializeField] private bool isPlayer = false;
         [SerializeField] private bool inLocker = false;
         [SerializeField] private GameObject BreathCheack;
-        [SerializeField] private GameObject player;
+        //[SerializeField] private GameObject player;
 
         [SerializeField] private BreathBar breathBar;
         [SerializeField] private Judgment judgment;
 
-        [SerializeField] private Transform target;
+        private NoiseEmitter _noiseEmitter;
 
-        private Vector3 lockedPos;
-        private bool locked;
+        [SerializeField] private NoiseEmitter noiseEmitter;
 
         //private float GimicOpen;
 
+
+        void Awake()
+        {
+            _noiseEmitter = GetComponentInChildren<NoiseEmitter>();
+        }
 
         void Update()
         {
@@ -43,18 +48,21 @@ namespace PBG_01_Locker
 
         private void InLockerTrue()
         {
+            _noiseEmitter.Begin();
             inLocker = false;
             isPlayer = false;
-            player.SetActive(true);
+            //player.SetActive(true);
             BreathCheack.SetActive(false);
+            noiseEmitter.End();
         }
 
         private void InLockerFalse()
         {
+            _noiseEmitter.Begin();
             isPlayer = true;
             inLocker = true;
             ShowGimic();
-            player.SetActive(false);
+            //player.SetActive(false);
 
         }
 
@@ -78,9 +86,9 @@ namespace PBG_01_Locker
         {
             if (Random.value < 0.4f)
             {
+                noiseEmitter.Begin();
                 BreathCheack.SetActive(true);
                 BreathCheack.GetComponentInChildren<BreathCheck>().SpawnHitZone();
-
             }
         }
 
