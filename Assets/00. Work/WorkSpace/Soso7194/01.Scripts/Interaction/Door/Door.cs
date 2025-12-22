@@ -1,83 +1,68 @@
 ﻿using _00._Work.Resources._02._Codes.Utils;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Door : MonoBehaviour
+namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
 {
-    [Header("Settings")]
-    public InputSo inputSo; // InputSO 연결
-    public enum DoorType { Enter, Exit }
-    public DoorType type;
-
-    [Header("If Enter Type")]
-    public string roomSceneName = "RoomScene"; // 이동할 씬 이름
-    public int roomIndexToGo = 0; // 몇 번째 방으로 갈지
-
-    private bool isPlayerNearby = false;
-
-    private void OnEnable()
+    public class Door : MonoBehaviour
     {
-        if (inputSo != null)
-            inputSo.OnInteractionKeyPressed += HandleInteraction;
-    }
+        [Header("Settings")]
+        public InputSo inputSo; // InputSO 연결
+        public enum DoorType { Enter, Exit }
+        public DoorType type;
 
-    private void OnDisable()
-    {
-        if (inputSo != null)
-            inputSo.OnInteractionKeyPressed -= HandleInteraction;
-    }
+        [Header("If Enter Type")]
+        public int roomIndexToGo = 0; // 이동할 방 번호 (RoomSpawnPoints 기준)
 
-    // F키(InputSO 이벤트)가 눌리면 실행
-    private void HandleInteraction()
-    {
-        if (isPlayerNearby)
+        private bool isPlayerNearby = false;
+        private GameObject playerObject;
+
+        private void OnEnable()
         {
-            MoveScene();
+            if (inputSo != null)
+                inputSo.OnInteractionKeyPressed += HandleInteraction;
         }
-    }
 
-    void MoveScene()
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return;
-
-        if (type == DoorType.Enter)
+        private void OnDisable()
         {
-            // 데이터 저장 (싱글톤 접근)
-            DoorManager.Instance.lastWorldPosition = player.transform.position;
-            DoorManager.Instance.lastWorldSceneName = SceneManager.GetActiveScene().name;
-            DoorManager.Instance.targetRoomIndex = roomIndexToGo;
-            DoorManager.Instance.isReturning = false;
-
-            SceneManager.LoadScene(roomSceneName);
+            if (inputSo != null)
+                inputSo.OnInteractionKeyPressed -= HandleInteraction;
         }
-        else if (type == DoorType.Exit)
-        {
-            // 복귀 모드 설정
-            DoorManager.Instance.isReturning = true;
-            DoorManager.Instance.targetRoomIndex = -1;
 
-            SceneManager.LoadScene(DoorManager.Instance.lastWorldSceneName);
-        }
-    }
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("Player is nearby!");
-        if (other.CompareTag("Player"))
+        private void HandleInteraction()
         {
-            Debug.Log("Player is nearby!");
-            isPlayerNearby = true;
+            // 플레이어가 근처에 있고, 플레이어 오브젝트를 찾았을 때만 실행
+            if (isPlayerNearby && playerObject != null)
+            {
+                if (type == DoorType.Enter)
+                {
+                    DoorManager.Instance.EnterRoom(playerObject, roomIndexToGo);
+                }
+                else
+                {
+                    DoorManager.Instance.ExitRoom(playerObject);
+                }
+            }
         }
-    }
-    
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+
+        // 물리 충돌 감지
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("Player is not nearby!");
-            isPlayerNearby = false;
+            if (other.CompareTag("Player"))
+            {
+                isPlayerNearby = true;
+                playerObject = other.gameObject; // 플레이어 캐싱
+                Debug.Log("문 근처: 상호작용 가능");
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                isPlayerNearby = false;
+                playerObject = null;
+            }
         }
     }
 }
