@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
 {
-    public class Door : MonoBehaviour
+    public class MoveRoom : MonoBehaviour
     {
         [Header("Settings")]
         public InputSo inputSo; // InputSO 연결

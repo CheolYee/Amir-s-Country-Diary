@@ -17,9 +17,10 @@ namespace PBG_01_PUSE
     public class Generator : MonoBehaviour
     {
         [Header("Settings")]
+        [Range(1, 3)] [SerializeField] private int floorNumber = 1; // 1~3층 설정
         [SerializeField] private InputSo inputSo;
-        [SerializeField] private List<GeneratorRecipe> recipes; // 필요 재료
-        [SerializeField] private GameObject activeVisual; // 가동 시 켜질 효과
+        [SerializeField] private List<GeneratorRecipe> recipes;
+        [SerializeField] private GameObject activeVisual;
         
         private bool isActivated = false;
         private bool isPlayerInRange = false;
@@ -40,7 +41,6 @@ namespace PBG_01_PUSE
 
             bool anyItemAdded = false;
 
-            // 모든 레시피 순회하며 넣을 수 있는 만큼 다 넣기
             foreach (var recipe in recipes)
             {
                 if (recipe.IsComplete) continue;
@@ -53,10 +53,7 @@ namespace PBG_01_PUSE
                         anyItemAdded = true;
                         Debug.Log($"{recipe.requiredItem.itemName} 주입! ({recipe.currentAmount}/{recipe.requiredAmount})");
                     }
-                    else
-                    {
-                        break; // 재료 없음
-                    }
+                    else break;
                 }
             }
 
@@ -66,19 +63,22 @@ namespace PBG_01_PUSE
 
         private void CheckCompletion()
         {
-            foreach (var recipe in recipes)
-            {
-                if (!recipe.IsComplete) return;
-            }
+            foreach (var recipe in recipes) if (!recipe.IsComplete) return;
             ActivateGenerator();
         }
 
         private void ActivateGenerator()
         {
             isActivated = true;
-            Debug.Log("발전기 가동!");
+            Debug.Log($"{floorNumber}층 발전기 가동!");
+            
             if (activeVisual != null) activeVisual.SetActive(true);
-            if (GeneratorManager.Instance != null) GeneratorManager.Instance.ReportGeneratorActivated(this);
+            
+            // 매니저에게 "몇 층"이 켜졌는지 보고
+            if (GeneratorManager.Instance != null)
+            {
+                GeneratorManager.Instance.SetFloorPower(floorNumber, true);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
