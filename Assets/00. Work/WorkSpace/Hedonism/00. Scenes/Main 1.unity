@@ -726,6 +726,7 @@ MonoBehaviour:
   player: {fileID: 1516592788}
   breathBar: {fileID: 199707178}
   judgment: {fileID: 329477512}
+  target: {fileID: 835153235}
 --- !u!212 &319368682
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -14,6 +14,11 @@ namespace PBG_01_Locker
         [SerializeField] private BreathBar breathBar;
         [SerializeField] private Judgment judgment;
 
+        [SerializeField] private Transform target;
+
+        private Vector3 lockedPos;
+        private bool locked;
+
         //private float GimicOpen;
 
 
@@ -34,9 +39,27 @@ namespace PBG_01_Locker
                 }
             }
         }
+        void LateUpdate()
+        {
+            if (locked)
+                target.position = lockedPos;
+        }
+
+        public void Lock()
+        {
+            lockedPos = target.position;
+            locked = true;
+        }
+
+        public void Unlock()
+        {
+            locked = false;
+        }
+
 
         private void InLockerTrue()
         {
+            Unlock();
             inLocker = false;
             isPlayer = false;
             player.SetActive(true);
@@ -45,10 +68,12 @@ namespace PBG_01_Locker
 
         private void InLockerFalse()
         {
+            Lock();
             isPlayer = true;
             inLocker = true;
             ShowGimic();
             player.SetActive(false);
+
         }
 
         private void OnTriggerStay2D(Collider2D collision)
@@ -62,7 +87,7 @@ namespace PBG_01_Locker
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                if(!inLocker)
+                if (!inLocker)
                     isPlayer = false;
             }
         }
