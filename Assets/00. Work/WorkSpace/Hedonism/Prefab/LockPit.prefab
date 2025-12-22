@@ -134,6 +134,7 @@ MonoBehaviour:
   pickDurability: 100
   damagePerSecond: 20
   targetAngle: 0
+  cam: {fileID: 0}
 --- !u!1 &4055905139720942880
 GameObject:
   m_ObjectHideFlags: 0
