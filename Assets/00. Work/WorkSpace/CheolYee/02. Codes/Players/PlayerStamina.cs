@@ -107,6 +107,16 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.Players
         {
             _runDraining = evt.IsOn && _current > 0f;
         }
+        
+        public void BlockRegenIndefinitely()
+        {
+            _regenBlockedUntil = float.PositiveInfinity;
+        }
+        
+        public void UnblockRegen()
+        {
+            _regenBlockedUntil = 0f;
+        }
 
         private void Spend(float amount)
         {
