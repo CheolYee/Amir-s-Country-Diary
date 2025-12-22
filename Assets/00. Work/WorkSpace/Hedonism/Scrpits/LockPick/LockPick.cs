@@ -27,6 +27,7 @@ namespace PBG_01_LockPick
         private float currentRotate;   // 현재 실린더 회전값
         private bool isUnlocked;
         private NoiseEmitter noiseEmitter;
+        [SerializeField] private NoiseEmitter _noiseEmitter;
 
         [SerializeField] private Camera cam;
 
@@ -115,9 +116,9 @@ namespace PBG_01_LockPick
 
             if (pickDurability <= 0f)
             {
-                cam.DOShakePosition(3, 3, 0);
-                //경보음 울리기
                 enabled = false; // 미니게임 종료
+                _noiseEmitter.Begin();
+                this.gameObject.SetActive(false);
 
             }
             else if(pickDurability <= 50 && pickDurability >= 49)
