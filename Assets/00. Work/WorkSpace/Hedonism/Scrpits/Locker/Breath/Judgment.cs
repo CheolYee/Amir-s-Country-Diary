@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using _00._Work.WorkSpace.CheolYee._02._Codes.EventSysyems;
-using _00._Work.WorkSpace.CheolYee._02._Codes.Players;
 using PBG_01_Breath;
-using Unity.VisualScripting;
-using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 
@@ -38,13 +34,13 @@ namespace PBG_01_Locker
                     else
                     {
                         Miss();
-                        Debug.Log("히히 븅신");
                     }
                 }
         }
 
         private void Miss()
         {
+                        Debug.Log("히히 븅신");
             //플레이어의 스태미나가 크게 줄어들게
             Bus<StaminaConsumeEvent>.Raise(new StaminaConsumeEvent(30f));
             

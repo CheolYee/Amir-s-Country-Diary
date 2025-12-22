@@ -9,7 +9,7 @@ namespace PBG_01_Locker
         [SerializeField] private bool isPlayer = false;
         [SerializeField] private bool inLocker = false;
         [SerializeField] private GameObject BreathCheack;
-        private GameObject player;
+        [SerializeField] private GameObject player;
 
         [SerializeField] private BreathBar breathBar;
         [SerializeField] private Judgment judgment;
@@ -56,7 +56,6 @@ namespace PBG_01_Locker
             if (collision.gameObject.CompareTag("Player"))
             {
                 isPlayer = true;
-                player = collision.gameObject;
             }
         }
         private void OnTriggerExit2D(Collider2D collision)
