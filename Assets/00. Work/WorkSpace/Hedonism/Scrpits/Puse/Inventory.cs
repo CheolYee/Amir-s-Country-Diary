@@ -50,9 +50,9 @@ namespace PBG_01_PUSE
         {
             if (inputSo != null)
             {
-                inputSo.OnInventory_1KeyPressed += () => UseItem(0);
-                inputSo.OnInventory_2KeyPressed += () => UseItem(1);
-                inputSo.OnInventory_3KeyPressed += () => UseItem(2);
+                inputSo.OnInventory1KeyPressed += () => UseItem(0);
+                inputSo.OnInventory2KeyPressed += () => UseItem(1);
+                inputSo.OnInventory3KeyPressed += () => UseItem(2);
             }
         }
 
@@ -61,9 +61,9 @@ namespace PBG_01_PUSE
             base.OnDestroy();
             if (inputSo != null)
             {
-                inputSo.OnInventory_1KeyPressed -= () => UseItem(0);
-                inputSo.OnInventory_2KeyPressed -= () => UseItem(1);
-                inputSo.OnInventory_3KeyPressed -= () => UseItem(2);
+                inputSo.OnInventory1KeyPressed -= () => UseItem(0);
+                inputSo.OnInventory2KeyPressed -= () => UseItem(1);
+                inputSo.OnInventory3KeyPressed -= () => UseItem(2);
             }
         }
 
