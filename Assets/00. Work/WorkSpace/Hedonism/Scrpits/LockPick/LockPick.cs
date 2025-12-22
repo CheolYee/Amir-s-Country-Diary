@@ -57,6 +57,11 @@ namespace PBG_01_LockPick
             targetAngle = Random.Range(180f, 0f);
         }
 
+        private void OnDisable()
+        {
+            isUnlocked = false;
+        }
+
         // 락픽 회전
         void RotatePick()
         {
