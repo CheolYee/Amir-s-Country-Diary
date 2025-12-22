@@ -1,5 +1,6 @@
 using System.Collections;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
+using DG.Tweening;
 using UnityEngine;
 
 
@@ -24,6 +25,8 @@ namespace PBG_01_LockPick
         private float pickAngle;       // 현재 락픽 각도
         private float currentRotate;   // 현재 실린더 회전값
         private bool isUnlocked;
+
+        [SerializeField] private Camera cam;
 
         void Start()
         {
@@ -105,8 +108,14 @@ namespace PBG_01_LockPick
 
             if (pickDurability <= 0f)
             {
+                cam.DOShakePosition(3, 3, 0);
                 //경보음 울리기
                 enabled = false; // 미니게임 종료
+
+            }
+            else if(pickDurability <= 50 && pickDurability >= 49)
+            {
+                cam.DOShakePosition(2, 2, 0);
             }
         }
 

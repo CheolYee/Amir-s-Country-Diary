@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
+using _00._Work.WorkSpace.CheolYee._02._Codes.EventSysyems;
 using PBG_01_Breath;
-using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 
@@ -13,10 +12,13 @@ namespace PBG_01_Locker
         private bool isCheack = false;
         private GameObject _note;
         private BreathCheck _breathCheck;
+
+
         [SerializeField] public int touchCount = 0;
         [field: SerializeField] public int success { get; set; } = 0;
         [SerializeField] private BreathBar breathBar;
         [SerializeField] private GameObject breath;
+
 
         void Awake()
         {
@@ -30,13 +32,18 @@ namespace PBG_01_Locker
                     if (isCheack)
                         Tap();
                     else
+                    {
                         Miss();
+                    }
                 }
         }
 
         private void Miss()
         {
-            //스태미나 사용
+                        Debug.Log("히히 븅신");
+            //플레이어의 스태미나가 크게 줄어들게
+            Bus<StaminaConsumeEvent>.Raise(new StaminaConsumeEvent(30f));
+            
         }
 
         private void Tap()
@@ -54,6 +61,7 @@ namespace PBG_01_Locker
             success = 0;
             touchCount = UnityEngine.Random.Range(3, 5);
         }
+
 
         private void Stop()
         {
