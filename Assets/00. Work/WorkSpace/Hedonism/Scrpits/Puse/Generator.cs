@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using _00._Work.Resources._02._Codes.Utils;
+using _00._Work.WorkSpace.CheolYee._02._Codes.EventSysyems;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Item;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.UI;
 
@@ -94,6 +95,8 @@ namespace PBG_01_PUSE
             {
                 GeneratorManager.Instance.SetFloorPower(floorNumber, true);
             }
+            
+            Bus<GeneratorActivatedEvent>.Raise(new GeneratorActivatedEvent(floorNumber));
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

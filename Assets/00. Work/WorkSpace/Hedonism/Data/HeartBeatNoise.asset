@@ -25,3 +25,4 @@ MonoBehaviour:
   tag: 3
   uiGainMultiplier: 0
   cameraGainMultiplier: 0
+  affectUiNoiseMeter: 0

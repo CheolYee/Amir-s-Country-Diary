@@ -112,30 +112,35 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
         {
             if (evt.Preset == null) return;
 
-            _lastNoiseTime = Time.time;
-            _heardThisFrame = true;
-
             Vector2 listenerPos = listener.position;
             float heard = ComputeHeard01(listenerPos, evt.Position, evt.Preset);
 
-            float add = heard * uiPulseGain * evt.Preset.uiGainMultiplier;
-            if (add > 0f)
-            {
-                float prev = noiseMeter;
-                noiseMeter = Mathf.Clamp01(noiseMeter + add);
-
-                if (!Mathf.Approximately(prev, noiseMeter))
-                {
-                    _uiTarget = noiseMeter;
-                    PublishMeter();
-                    UpdateAlarmState();
-                }
-            }
-
-            if (NoiseEmitterRegistry.TryGet(evt.SourceId, out var emitter) && emitter != null && emitter.UseManagedVolume)
+            if (NoiseEmitterRegistry.TryGet(evt.SourceId, out var emitter) &&
+                emitter != null && emitter.UseManagedVolume)
             {
                 emitter.SetManagedVolume(heard);
                 _volumeCache[evt.SourceId] = heard;
+            }
+
+            if (!evt.Preset.affectUiNoiseMeter)
+                return;
+
+            float add = heard * uiPulseGain * evt.Preset.uiGainMultiplier;
+
+            if (add <= 0f)
+                return;
+
+            _lastNoiseTime = Time.time;
+            _heardThisFrame = true;
+
+            float prev = noiseMeter;
+            noiseMeter = Mathf.Clamp01(noiseMeter + add);
+
+            if (!Mathf.Approximately(prev, noiseMeter))
+            {
+                _uiTarget = noiseMeter;
+                PublishMeter();
+                UpdateAlarmState();
             }
         }
 

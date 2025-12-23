@@ -23,5 +23,6 @@ MonoBehaviour:
   halfDistance: 5
   type: 0
   tag: 1
-  uiGainMultiplier: 0.8
+  uiGainMultiplier: 0.4
   cameraGainMultiplier: 1
+  affectUiNoiseMeter: 1

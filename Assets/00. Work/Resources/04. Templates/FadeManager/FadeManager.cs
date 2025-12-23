@@ -13,6 +13,9 @@ namespace _00._Work.Resources._04._Templates.FadeManager
         [SerializeField] private CanvasGroup fadeCanvasGroup;
         public float fadeDuration = 1f;
         
+        public bool IsTransitioning { get; private set; }   // ✅ 전환 중인지
+        public event Action OnTransitionFinished;
+        
         protected override void Awake()
         {
             base.Awake();
@@ -40,9 +43,11 @@ namespace _00._Work.Resources._04._Templates.FadeManager
             fadeCanvasGroup.DOFade(0f, fadeDuration).OnComplete(() =>
             {
                 fadeCanvasGroup.gameObject.SetActive(false);
+                IsTransitioning = false;
                 fadeCanvasGroup.interactable = false;
                 fadeCanvasGroup.blocksRaycasts = false;
                 onComplete?.Invoke();
+                OnTransitionFinished?.Invoke();
             });
         }
 
@@ -51,6 +56,9 @@ namespace _00._Work.Resources._04._Templates.FadeManager
             if (fadeCanvasGroup == null)
                 return;
 
+            if (IsTransitioning) return; 
+            IsTransitioning = true;
+            
             fadeCanvasGroup.gameObject.SetActive(true);
             fadeCanvasGroup.alpha = 0f;
             fadeCanvasGroup.interactable = true;
