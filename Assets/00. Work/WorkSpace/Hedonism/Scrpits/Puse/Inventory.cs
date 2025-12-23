@@ -52,19 +52,10 @@ namespace PBG_01_PUSE
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) playerTransform = player.transform;
-
-            if (inputSo != null)
-            {
-                // 람다식 대신 별도의 메서드를 연결해야 해제가 가능합니다.
-                inputSo.OnInventory1KeyPressed += HandleUseSlot1;
-                inputSo.OnInventory2KeyPressed += HandleUseSlot2;
-                inputSo.OnInventory3KeyPressed += HandleUseSlot3;
-            }
         }
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
             if (inputSo != null)
             {
                 // 올바른 이벤트 해제 방식
@@ -72,13 +63,30 @@ namespace PBG_01_PUSE
                 inputSo.OnInventory2KeyPressed -= HandleUseSlot2;
                 inputSo.OnInventory3KeyPressed -= HandleUseSlot3;
             }
+            base.OnDestroy();
         }
 
         public void SetInputSo(InputSo so)
         {
-            // 런타임에 InputSo가 변경될 경우 기존 이벤트 해제 및 재등록 로직이 필요할 수 있음
+            if (inputSo == so) return;
+
+            if (inputSo != null)
+            {
+                inputSo.OnInventory1KeyPressed -= HandleUseSlot1;
+                inputSo.OnInventory2KeyPressed -= HandleUseSlot2;
+                inputSo.OnInventory3KeyPressed -= HandleUseSlot3;
+            }
+
             inputSo = so;
+
+            if (inputSo != null)
+            {
+                inputSo.OnInventory1KeyPressed += HandleUseSlot1;
+                inputSo.OnInventory2KeyPressed += HandleUseSlot2;
+                inputSo.OnInventory3KeyPressed += HandleUseSlot3;
+            }
         }
+
 
         // 이벤트 연결용 래퍼 메서드
         private void HandleUseSlot1() => UseItem(0);

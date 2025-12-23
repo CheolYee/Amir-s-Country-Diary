@@ -1,15 +1,15 @@
+using _00._Work.Resources._02._Codes.Utils;
 using UnityEngine;
 using PBG_01_PUSE;
-using _00._Work.Resources._02._Codes.Utils;
 
 public class InventoryUI : MonoBehaviour
 {
-    [Header("Slots (Size = 3)")]
     [SerializeField] private InventorySlotUI[] slotUIs;
-
     [SerializeField] private InputSo inputSo;
-    [SerializeField] GameObject item;
-    private void Awake()
+
+    private Inventory _inv;
+
+    private void Start()
     {
         if (inputSo == null)
         {
@@ -17,35 +17,35 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
-        // 여기서 Inventory의 inputSo를 정의해준다
-        Inventory.Instance.SetInputSo(inputSo);
-    }
+        _inv = Inventory.Instance;
+        if (_inv == null)
+        {
+            Debug.LogError("InventoryUI: Inventory 인스턴스를 찾거나 생성할 수 없음");
+            return;
+        }
 
-    private void Start()
-    {
-        // 인벤토리 변경 이벤트 구독
-        Inventory.Instance.OnInventoryUpdated += Refresh;
-
-        // 초기 상태 반영
+        _inv.SetInputSo(inputSo);
+        _inv.OnInventoryUpdated += Refresh;
         Refresh();
     }
 
     private void OnDestroy()
     {
-        if (Inventory.Instance != null)
-            Inventory.Instance.OnInventoryUpdated -= Refresh;
+        if (_inv != null)
+            _inv.OnInventoryUpdated -= Refresh;
     }
 
-    /// <summary>
-    /// Inventory 슬롯 리스트 순서 그대로 UI에 반영
-    /// </summary>
     private void Refresh()
     {
-        var slots = Inventory.Instance.GetSlots();
+        if (_inv == null) return;
 
-        for (int i = 0; i < slotUIs.Length; i++)
+        var slots = _inv.GetSlots();
+        int n = Mathf.Min(slotUIs.Length, slots.Count);
+
+        for (int i = 0; i < n; i++)
         {
-            slotUIs[i].Refresh(slots[i]);
+            if (slotUIs[i] != null)
+                slotUIs[i].Refresh(slots[i]);
         }
     }
 }

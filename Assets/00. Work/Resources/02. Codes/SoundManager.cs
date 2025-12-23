@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using _00._Work.Resources._02._Codes.Utils;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _00._Work.Resources._02._Codes
 {
@@ -44,7 +46,6 @@ namespace _00._Work.Resources._02._Codes
 
     public class SoundManager : MonoSingleton<SoundManager>
     {
-
         [Header("Audio Sources")] public AudioSource bgmSource;
         public AudioSource sfxSource;
 
@@ -69,6 +70,11 @@ namespace _00._Work.Resources._02._Codes
             LoadSettings();
             ApplyVolume();
             
+        }
+
+        private void Start()
+        {
+            if (Instance != this) return;
             PlayBgm(BgmId.Normal);
         }
 

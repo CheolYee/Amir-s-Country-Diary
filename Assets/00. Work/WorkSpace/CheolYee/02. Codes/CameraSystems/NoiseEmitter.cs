@@ -70,6 +70,14 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
         {
             if (_audio == null) _audio = GetComponent<AudioSource>();
             ApplyPresetToAudio();
+
+            // ✅ 에디터에서는 글로벌(싱글톤) 참조 금지
+            if (!Application.isPlaying)
+            {
+                _audio.volume = useManagedVolume ? 0f : baseAudioVolume;
+                return;
+            }
+
             ApplyInitialVolume();
         }
 
@@ -83,7 +91,9 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
         
         private float GlobalSfxVol()
         {
-            return SoundManager.Instance != null ? SoundManager.Instance.GetSfxVolume() : 1f;
+            if (!Application.isPlaying) return 1f; // 안전장치
+            var sm = SoundManager.Instance;
+            return sm != null ? sm.GetSfxVolume() : 1f;
         }
 
         private void ApplyInitialVolume()
