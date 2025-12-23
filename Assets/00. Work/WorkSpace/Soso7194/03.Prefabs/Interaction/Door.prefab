@@ -163,6 +163,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8635417937157144037}
     m_Modifications:
+    - target: {fileID: 227204516548610543, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
+      propertyPath: noiseSourceKind
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1098493766016399477, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
+      propertyPath: noiseSourceKind
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1178162814738643005, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -243,6 +251,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 5.66
       objectReference: {fileID: 0}
+    - target: {fileID: 3317304193405991230, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4200528141295488492, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
       propertyPath: m_Name
       value: LockPic
@@ -270,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 8583501418080098203, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
       propertyPath: m_SortingLayerID
       value: -1528814165
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147383131113753335, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4119899434149046281, guid: d6f7f7cbf1139af44ac7befff7527459, type: 3}
       propertyPath: m_SortingOrder
@@ -304,11 +320,15 @@ PrefabInstance:
     - target: {fileID: 3212984318125235538, guid: 762f494eef9179a40be9a5d16bc653b0, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 847b96ac47b4c8f4d84b1b1ff7b542da, type: 3}
+      objectReference: {fileID: 8300000, guid: a55ed1ecd9dc6fd45bd27af6b9be4f9c, type: 3}
     - target: {fileID: 3846018059736141649, guid: 762f494eef9179a40be9a5d16bc653b0, type: 3}
       propertyPath: preset
       value: 
       objectReference: {fileID: 11400000, guid: 4ae2ebde762a639479b0404040e418be, type: 2}
+    - target: {fileID: 3846018059736141649, guid: 762f494eef9179a40be9a5d16bc653b0, type: 3}
+      propertyPath: noiseSourceKind
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4941406675891633619, guid: 762f494eef9179a40be9a5d16bc653b0, type: 3}
       propertyPath: m_Name
       value: NoiseEmitter

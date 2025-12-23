@@ -48,7 +48,7 @@ namespace PBG_01_Locker
 
         private void InLockerTrue()
         {
-            _noiseEmitter.Begin();
+            _noiseEmitter.EmitOnce();
             inLocker = false;
             isPlayer = false;
             //player.SetActive(true);
@@ -58,7 +58,7 @@ namespace PBG_01_Locker
 
         private void InLockerFalse()
         {
-            _noiseEmitter.Begin();
+            _noiseEmitter.EmitOnce();
             isPlayer = true;
             inLocker = true;
             ShowGimic();
@@ -86,7 +86,7 @@ namespace PBG_01_Locker
         {
             if (Random.value < 0.4f)
             {
-                noiseEmitter.Begin();
+                noiseEmitter.EmitOnce();
                 BreathCheack.SetActive(true);
                 BreathCheack.GetComponentInChildren<BreathCheck>().SpawnHitZone();
             }

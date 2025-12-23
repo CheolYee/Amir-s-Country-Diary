@@ -10,6 +10,10 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
 
         [SerializeField] private float huntSpeed = 5.5f;
         
+        [Header("Loop Noise (Camera Active Hum)")]
+        [SerializeField] private NoiseEmitter loopNoise;  
+        [SerializeField] private bool playLoopNoiseWhenActive = true;
+        
         [Header("Hunt GiveUp When Hidden")]
         [SerializeField] private float hiddenGiveupSec = 3f; // 캐비닛 숨김 4초면 포기
         [SerializeField] private bool moveToLastKnownWhileHidden = true;
@@ -53,6 +57,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
             }
 
             Bus<CameraGlobalSetPresenceEvent>.OnEvent += OnGlobalPresence;
+            
+            StartLoopNoiseIfAllowed();
         }
 
         private void OnDisable()
@@ -64,8 +70,25 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
                 focus.OnPhoto -= HandlePhoto;
                 focus.OnGiveUp -= HandleGiveUp;
             }
+            
+            StopLoopNoise();
 
             CameraRegistry.Unregister(this);
+        }
+        
+        private void StartLoopNoiseIfAllowed()
+        {
+            if (!playLoopNoiseWhenActive) return;
+            if (loopNoise == null) return;
+            if (_suppressed) return;          // 억제 상태면 재생 금지
+
+            loopNoise.Begin();
+        }
+
+        private void StopLoopNoise()
+        {
+            if (loopNoise == null) return;
+            loopNoise.End();
         }
 
         public void ForceHunt(Transform player)
@@ -179,6 +202,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
         }
         private void HandlePhoto(Vector2 playerPos)
         {
+            StopLoopNoise();
+            
             Bus<PhotoTakenEvent>.Raise(new PhotoTakenEvent(_cameraId, playerPos));
             StopHunt();
             hearing?.ClearTargets(); // 원하면 유지해도 됨
@@ -196,6 +221,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
 
             _suppressed = true;
             _suppressedHidden = hide;
+            
+            StopLoopNoise();
 
             StopHunt();
             mover?.StopImmediate(); // 너가 추가했던 메서드
@@ -223,6 +250,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
                 focus.enabled = _savedFocusEnabled;
 
             hearing?.SetEnabled(true);
+            
+            StartLoopNoiseIfAllowed();
         }
 
         private void ApplyHide(bool hide)

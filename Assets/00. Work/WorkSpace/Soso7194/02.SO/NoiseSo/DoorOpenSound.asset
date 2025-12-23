@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: DoorOpenSound
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 847b96ac47b4c8f4d84b1b1ff7b542da, type: 3}
+  - {fileID: 8300000, guid: a55ed1ecd9dc6fd45bd27af6b9be4f9c, type: 3}
   clipSelectMode: 0
   avoidImmediateRepeat: 1
   loop: 0
   pulseInterval: 0.35
-  loudness: 0.6
-  maxRange: 12
-  halfDistance: 5
+  loudness: 0.764
+  maxRange: 20
+  halfDistance: 10
   type: 0
-  tag: 0
-  uiGainMultiplier: 1
-  cameraGainMultiplier: 1
+  tag: 1
+  uiGainMultiplier: 1.2
+  cameraGainMultiplier: 1.3

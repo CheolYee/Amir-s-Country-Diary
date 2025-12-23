@@ -121,7 +121,7 @@ namespace PBG_01_LockPick
             if (pickDurability <= 0f)
             {
                 enabled = false; // 미니게임 종료
-                _noiseEmitter.Begin();
+                _noiseEmitter.EmitOnce();
                 parent.SetActive(false);
             }
             else if (pickDurability <= 50 && pickDurability >= 49 || pickDurability < 10 && pickDurability > 9)
@@ -138,7 +138,7 @@ namespace PBG_01_LockPick
         void Unlock()
         {
             if (isUnlocked) return;
-            noiseEmitter.Begin();
+            noiseEmitter.EmitOnce();
             isUnlocked = true;
             StartCoroutine(RotateToUnlock());
             OnUnlocked?.Invoke();

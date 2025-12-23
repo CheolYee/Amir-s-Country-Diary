@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using _00._Work.Resources._02._Codes.Utils;
+using _00._Work.WorkSpace.CheolYee._02._Codes.Agents;
 using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
+using _00._Work.WorkSpace.CheolYee._02._Codes.Players;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
 using PBG_01_LockPick;
 using Unity.Cinemachine; 
@@ -34,8 +36,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
         private bool _isUsingLockPick = false; 
 
         // 물리 제어용 변수
-        private Rigidbody2D _playerRb;
-        private RigidbodyType2D _originalBodyType;
+        private AgentMover _mover;
 
         private void OnEnable()
         {
@@ -100,7 +101,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
                 return;
             }
 
-            noiseEmitter.Begin();
+            noiseEmitter.EmitOnce();
             switch (type)
             {
                 case DoorType.Enter:
@@ -120,13 +121,13 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
         private void StartLockPicking()
         {
             _isUsingLockPick = true;
-            _playerRb = _playerObject.GetComponent<Rigidbody2D>();
+            _mover = _playerObject.GetComponent<Player>().GetCompo<AgentMover>();
 
-            if (_playerRb != null)
+            if (_mover != null)
             {
-                _originalBodyType = _playerRb.bodyType;
-                _playerRb.linearVelocity = Vector2.zero; 
-                _playerRb.bodyType = RigidbodyType2D.Static; // 플레이어 고정
+                _mover.StopImmediately(true, true);
+                _mover.CanManualMovement = false;
+                
             }
         }
 
@@ -153,10 +154,11 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
         {
             _isUsingLockPick = false; // 다시 상호작용 가능하도록 플래그 해제
 
-            if (_playerRb != null)
+            if (_mover != null)
             {
-                _playerRb.bodyType = _originalBodyType; // 움직임 복구
-                _playerRb = null;
+                _mover.StopImmediately(false, false);
+                _mover.CanManualMovement = true;
+                
             }
         }
 
