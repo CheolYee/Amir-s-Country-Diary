@@ -5,7 +5,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Item
     public enum ItemType
     {
         Fuse,
-        Silent,
+        Wire,
         Bolt,
         Board
     }
