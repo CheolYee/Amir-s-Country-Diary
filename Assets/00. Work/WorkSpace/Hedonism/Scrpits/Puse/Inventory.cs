@@ -31,7 +31,10 @@ namespace PBG_01_PUSE
         [Header("Data")]
         [SerializeField] private List<InventorySlot> slots;
 
+        
+
         public event Action OnInventoryUpdated;
+        private GameObject item;
 
         protected override void Awake()
         {
@@ -60,6 +63,11 @@ namespace PBG_01_PUSE
             inputSo = so;
         }
 
+        public void SetItem(GameObject item)
+        {
+            this.item = item;
+        }
+
 
         private void Start()
         {
@@ -85,6 +93,7 @@ namespace PBG_01_PUSE
 
         public bool AddItem(ItemSo item)
         {
+
             foreach (var slot in slots)
             {
                 if (slot.itemData == item)
@@ -109,7 +118,8 @@ namespace PBG_01_PUSE
 
         public void UseItem(int slotIndex)
         {
-            //실행 했을 때 쓴 슬롯에 있는 아이템이 그냥 삭제만되는 것이 아니라 쓴 아이템의 Prefab을 복제해서 화면에 나타나게 해야함
+            //item 오브젝트에 해당 순번의 리스트 값의 so를 넣어준다.
+            //새 게임 오브젝트 하나를 복제하고 조건에 맞는 리스트 순번에 들어있는 so를 방금 복제한 오브젝트에 넣어준다.
 
             if (slotIndex < 0 || slotIndex >= slots.Count) return;
             InventorySlot slot = slots[slotIndex];
@@ -117,7 +127,12 @@ namespace PBG_01_PUSE
             if (slot.itemData != null)
             {
                 Debug.Log($"사용: {slot.itemData.itemName}");
-                slot.itemData.Use();
+                item.GetComponent<Puse>().Initialize(slot.itemData);
+
+                
+                GameObject itemObj = Instantiate(item, Vector3.zero, Quaternion.identity);
+                
+
                 slot.RemoveCount(1);
                 if (slot.IsEmpty) slot.Clear();
                 OnInventoryUpdated?.Invoke();

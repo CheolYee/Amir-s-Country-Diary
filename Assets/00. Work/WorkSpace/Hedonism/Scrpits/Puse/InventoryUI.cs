@@ -8,7 +8,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private InventorySlotUI[] slotUIs;
 
     [SerializeField] private InputSo inputSo;
-
+    [SerializeField] GameObject item;
     private void Awake()
     {
         if (inputSo == null)
@@ -19,6 +19,7 @@ public class InventoryUI : MonoBehaviour
 
         // 여기서 Inventory의 inputSo를 정의해준다
         Inventory.Instance.SetInputSo(inputSo);
+        Inventory.Instance.SetItem(item);
     }
 
     private void Start()

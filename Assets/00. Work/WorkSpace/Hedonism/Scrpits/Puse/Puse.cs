@@ -46,6 +46,7 @@ public class Puse : MonoBehaviour
             // 플레이어가 범위 안에 있고, 데이터가 설정되어 있을 때만
             if (_canPickup && _itemData != null)
             {
+                Debug.Log("체크 1 성공");
                 // 인벤토리 싱글톤 접근 (사용하시는 인벤토리 구조에 맞춤)
                 if (Inventory.Instance != null)
                 {
@@ -54,8 +55,8 @@ public class Puse : MonoBehaviour
                         Debug.Log($"[{_itemData.itemName}] 획득 성공!");
                         
                         // 획득 후 오브젝트 비활성화 또는 파괴
-                        gameObject.SetActive(false); 
-                        // Destroy(gameObject); // 필요시 파괴로 변경
+                        
+                        Destroy(gameObject); // 필요시 파괴로 변경
                     }
                     else
                     {
