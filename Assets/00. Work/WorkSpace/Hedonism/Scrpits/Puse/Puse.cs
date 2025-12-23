@@ -10,8 +10,10 @@ public class Puse : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
         
     [Header("Settings")]
-    [SerializeField] private InputSo _inputSo; 
+    [SerializeField] private InputSo _inputSo;
 
+    [SerializeField] private GameObject _text;
+    
     private ItemSo _itemData;
     private bool _canPickup = false;
     private bool _isDropCooldown = false; // 드랍 쿨타임
@@ -41,6 +43,7 @@ public class Puse : MonoBehaviour
     private void OnEnable()
     {
         if (_inputSo != null) _inputSo.OnInteractionKeyPressed += HandleInteraction;
+        _text.SetActive(false);
     }
 
     private void OnDisable()
@@ -73,11 +76,19 @@ public class Puse : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) _canPickup = true;
+        if (other.CompareTag("Player"))
+        {
+            _canPickup = true;
+            _text.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) _canPickup = false;
+        if (other.CompareTag("Player"))
+        {
+            _canPickup = false;
+            _text.SetActive(false);
+        }
     }
 }

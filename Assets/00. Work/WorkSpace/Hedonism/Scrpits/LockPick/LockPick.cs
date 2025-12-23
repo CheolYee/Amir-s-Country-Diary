@@ -124,7 +124,7 @@ namespace PBG_01_LockPick
                 _noiseEmitter.Begin();
                 parent.SetActive(false);
             }
-            else if (pickDurability <= 50 /*&& pickDurability >= 49 || pickDurability < 10 && pickDurability > 9*/)
+            else if (pickDurability <= 50 && pickDurability >= 49 || pickDurability < 10 && pickDurability > 9)
             {
                 cam.transform
                 .DOShakeRotation(1f, 3f, 10)
