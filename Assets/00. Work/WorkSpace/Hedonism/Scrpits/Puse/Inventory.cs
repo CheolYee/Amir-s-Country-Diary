@@ -109,12 +109,15 @@ namespace PBG_01_PUSE
 
         public void UseItem(int slotIndex)
         {
+            //실행 했을 때 쓴 슬롯에 있는 아이템이 그냥 삭제만되는 것이 아니라 쓴 아이템의 Prefab을 복제해서 화면에 나타나게 해야함
+
             if (slotIndex < 0 || slotIndex >= slots.Count) return;
             InventorySlot slot = slots[slotIndex];
 
             if (slot.itemData != null)
             {
                 Debug.Log($"사용: {slot.itemData.itemName}");
+                slot.itemData.Use();
                 slot.RemoveCount(1);
                 if (slot.IsEmpty) slot.Clear();
                 OnInventoryUpdated?.Invoke();
