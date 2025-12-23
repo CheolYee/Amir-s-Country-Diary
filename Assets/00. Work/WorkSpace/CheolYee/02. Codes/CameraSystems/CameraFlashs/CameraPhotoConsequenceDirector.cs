@@ -53,21 +53,20 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.CameraFlashs
         {
             if (_player == null) TryCachePlayer();
 
-            // 1) 플래시
             Bus<PhotoFlashEvent>.Raise(new PhotoFlashEvent(flashDuration, flashPeakAlpha));
 
-            // 2) 빨간 경고문
             string msg = (alertTexts != null && alertTexts.Length > 0)
                 ? alertTexts[Random.Range(0, alertTexts.Length)]
                 : "위험한 기척이 느껴집니다.";
 
             Bus<AlertMessageEvent>.Raise(new AlertMessageEvent(msg, alertDuration));
 
-            // 3) 보스 스폰 요청
             if (!spawnBoss) return;
 
             int floorId = floorTracker != null ? floorTracker.CurrentFloor : 0;
             Bus<BossSpawnRequestEvent>.Raise(new BossSpawnRequestEvent(floorId, evt.PlayerPos));
+            
+            Bus<CameraGlobalSetPresenceEvent>.Raise(new CameraGlobalSetPresenceEvent(false, true));
         }
     }
 }

@@ -17,6 +17,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
         [Header("Investigate Speed")]
         [SerializeField] private float baseSpeed = 2.2f;
         [SerializeField] private float speedGain = 4.0f;
+        
+        [SerializeField] private bool ignoreBossNoise = true;
 
         private class Heard
         {
@@ -86,6 +88,9 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
 
         private void OnNoise(NoiseEmittedEvent evt)
         {
+            if (ignoreBossNoise && evt.Kind == NoiseSourceKind.Boss)
+                return;
+            
             if (evt.Preset == null) return;
 
             float score = ComputeScore(transform.position, evt.Position, evt.Preset);

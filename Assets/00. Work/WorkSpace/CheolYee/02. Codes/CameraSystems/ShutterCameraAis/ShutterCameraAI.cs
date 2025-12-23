@@ -18,20 +18,30 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
         [SerializeField] private ShutterCameraMover mover;
         [SerializeField] private ShutterCameraHearing hearing;
         [SerializeField] private ShutterCameraFocus focus;
-
+        
         private int _cameraId;
 
         private Transform _huntPlayer;
         private PlayerHideStatus _huntHide;
         private Vector2 _huntLastKnownPos;
         private float _huntHiddenSince = -1f;
+        
+        private bool _suppressed;
+        private bool _suppressedHidden;
+
+        private bool _savedFocusEnabled;
+        private Renderer[] _renderers;
+        private Collider2D[] _colliders;
 
         private void Awake()
         {
             _cameraId = GetInstanceID();
             if (mover == null) mover = GetComponent<ShutterCameraMover>();
+            
+            _renderers = GetComponentsInChildren<Renderer>(true);
+            _colliders = GetComponentsInChildren<Collider2D>(true);
         }
-
+        
         private void OnEnable()
         {
             CameraRegistry.Register(this);
@@ -41,10 +51,14 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
                 focus.OnPhoto += HandlePhoto;
                 focus.OnGiveUp += HandleGiveUp;
             }
+
+            Bus<CameraGlobalSetPresenceEvent>.OnEvent += OnGlobalPresence;
         }
 
         private void OnDisable()
         {
+            Bus<CameraGlobalSetPresenceEvent>.OnEvent -= OnGlobalPresence;
+
             if (focus != null)
             {
                 focus.OnPhoto -= HandlePhoto;
@@ -56,6 +70,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
 
         public void ForceHunt(Transform player)
         {
+            if (_suppressed) return;
+            
             _huntPlayer = player;
             _huntLastKnownPos = player.position;
             _huntHiddenSince = -1f;
@@ -69,6 +85,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
 
         private void Update()
         {
+            if (_suppressed) return;
+            
             hearing?.Tick();
 
             // ✅ 헌팅 중 숨김 처리(락온 버그 핵심)
@@ -123,18 +141,6 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
                 mover?.TickPatrol();
         }
 
-        private void HandlePhoto(Vector2 playerPos)
-        {
-            Bus<PhotoTakenEvent>.Raise(new PhotoTakenEvent(_cameraId, playerPos));
-            StopHunt();
-            hearing?.ClearTargets(); // 원하면 유지해도 됨
-        }
-
-        private void HandleGiveUp()
-        {
-            StopHunt();
-        }
-
         private void StopHunt()
         {
             _huntPlayer = null;
@@ -162,6 +168,70 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
             targetPos = default;
             speed = 0f;
             return false;
+        }
+        
+        private void OnGlobalPresence(CameraGlobalSetPresenceEvent evt)
+        {
+            if (evt.Present)
+                ExitSuppressed();
+            else
+                EnterSuppressed(evt.Hide);
+        }
+        private void HandlePhoto(Vector2 playerPos)
+        {
+            Bus<PhotoTakenEvent>.Raise(new PhotoTakenEvent(_cameraId, playerPos));
+            StopHunt();
+            hearing?.ClearTargets(); // 원하면 유지해도 됨
+        }
+
+        private void HandleGiveUp()
+        {
+            StopHunt();
+        }
+        
+
+        private void EnterSuppressed(bool hide)
+        {
+            if (_suppressed) return;
+
+            _suppressed = true;
+            _suppressedHidden = hide;
+
+            StopHunt();
+            mover?.StopImmediate(); // 너가 추가했던 메서드
+            hearing?.SetEnabled(false, clearTargets: true);
+
+            if (focus != null)
+            {
+                _savedFocusEnabled = focus.enabled;
+                focus.ForceReset();      // 너가 추가했던 wrapper
+                focus.enabled = false;
+            }
+
+            ApplyHide(hide);
+        }
+
+        private void ExitSuppressed()
+        {
+            if (!_suppressed) return;
+
+            _suppressed = false;
+
+            ApplyHide(false);
+
+            if (focus != null)
+                focus.enabled = _savedFocusEnabled;
+
+            hearing?.SetEnabled(true);
+        }
+
+        private void ApplyHide(bool hide)
+        {
+            if (_renderers != null)
+                foreach (var r in _renderers) if (r != null) r.enabled = !hide;
+
+            if (_colliders != null)
+                foreach (var c in _colliders) if (c != null) c.enabled = !hide;
         }
     }
 }

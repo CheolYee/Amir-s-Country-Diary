@@ -28,6 +28,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
 
         private void OnAlarmRaised(NoiseAlarmRaisedEvent evt)
         {
+            Bus<CameraGlobalSetPresenceEvent>.Raise(new CameraGlobalSetPresenceEvent(true, false));
+            
             if (_player == null)
             {
                 var go = GameObject.FindGameObjectWithTag(playerTag);

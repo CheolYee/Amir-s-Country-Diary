@@ -21,6 +21,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
         [Tooltip("프리셋 loudness와 별개로, 실제 AudioSource에 곱해질 기본 볼륨")]
         [Range(0f, 1f)]
         [SerializeField] private float baseAudioVolume = 1f;
+        
+        [SerializeField] private NoiseSourceKind noiseSourceKind = NoiseSourceKind.Player;
 
         public NoisePresetSo Preset => preset;
         public AudioSource Audio => _audio;
@@ -35,25 +37,6 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
         
         private int _clipCursor;
         private int _lastRandomIndex = -1;
-        
-        
-        [ContextMenu("TEST/Emit Once (Impulse)")]
-        private void TEST_EmitOnce()
-        {
-            EmitOnce();
-        }
-
-        [ContextMenu("TEST/Begin (Loop/Pulse)")]
-        private void TEST_Begin()
-        {
-            Begin();
-        }
-
-        [ContextMenu("TEST/End")]
-        private void TEST_End()
-        {
-            End();
-        }
 
         private void Awake()
         {
@@ -201,7 +184,7 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
                 sourceId: _sourceId,
                 position: transform.position,
                 preset: preset,
-                emitTime: Time.time
+                kind: noiseSourceKind
             );
 
             Bus<NoiseEmittedEvent>.Raise(evt);

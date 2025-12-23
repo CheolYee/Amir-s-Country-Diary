@@ -55,6 +55,14 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
 
             _hasMoveCmd = false; // 매 프레임 명령 갱신 방식
         }
+        
+        public void StopImmediate()
+        {
+            _hasMoveCmd = false;
+
+            if (useRigidbody && rb != null)
+                rb.linearVelocity = Vector2.zero;
+        }
 
         /// <summary>
         /// 순찰 루트를 따라 이동. 루트가 없으면 false.
