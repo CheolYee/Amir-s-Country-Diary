@@ -19,7 +19,6 @@ public class InventoryUI : MonoBehaviour
 
         // 여기서 Inventory의 inputSo를 정의해준다
         Inventory.Instance.SetInputSo(inputSo);
-        Inventory.Instance.SetItem(item);
     }
 
     private void Start()
