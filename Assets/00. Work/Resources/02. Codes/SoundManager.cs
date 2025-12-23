@@ -24,6 +24,7 @@ namespace _00._Work.Resources._02._Codes
         None,
         JumpScare1,
         JumpScare2,
+        CameraFlash
         
     }
     
