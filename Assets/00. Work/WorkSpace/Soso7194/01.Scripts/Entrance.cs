@@ -57,7 +57,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts
         {
             if (_isOpened)
             {
-                // 엔딩인데 뭐 해요??????????????????
+                Clear.Instance.OnClear();
             }
         }
     }

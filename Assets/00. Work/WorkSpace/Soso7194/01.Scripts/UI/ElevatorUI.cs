@@ -18,10 +18,11 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.UI
 
         private void Start()
         {
-            // 버튼 연결 (싱글톤 Instance 사용)
-            btn1F.onClick.AddListener(() => Elevator.Instance.MoveToFloor(1));
-            btn2F.onClick.AddListener(() => Elevator.Instance.MoveToFloor(2));
-            btn3F.onClick.AddListener(() => Elevator.Instance.MoveToFloor(3));
+            // [수정] 각 버튼이 전용 함수를 호출하도록 변경
+            btn1F.onClick.AddListener(() => Elevator.Instance.OnClickFloor1());
+            btn2F.onClick.AddListener(() => Elevator.Instance.OnClickFloor2());
+            btn3F.onClick.AddListener(() => Elevator.Instance.OnClickFloor3());
+            
             btnClose.onClick.AddListener(() => Elevator.Instance.CloseUI());
 
             if (GeneratorManager.Instance != null)
