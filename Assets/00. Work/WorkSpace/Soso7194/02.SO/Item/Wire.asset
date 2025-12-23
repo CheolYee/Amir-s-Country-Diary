@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: "\uC804\uC120"
-  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemSprite: {fileID: 7807983109753917801, guid: d8fd0ec0e9dd8bf44ac7eaad6cb85381, type: 3}
   itemValue: 0
   itemTooltip: "\uC804\uC120\uC785\uB2C8\uB2E4"
+  itemPrefab: {fileID: 4232541692570682844, guid: ffa4a5e02ec3580469ecbb82afc8cf60, type: 3}
