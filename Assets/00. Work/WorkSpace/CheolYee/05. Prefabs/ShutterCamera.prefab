@@ -214,6 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huntSpeed: 5
+  hiddenGiveupSec: 3
+  moveToLastKnownWhileHidden: 1
   mover: {fileID: 7941451699156609870}
   hearing: {fileID: 7699588095636617232}
   focus: {fileID: 8811672494759204685}

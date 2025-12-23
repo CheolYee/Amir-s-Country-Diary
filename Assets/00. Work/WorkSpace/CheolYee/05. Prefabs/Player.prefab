@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4992771051b545949e4750257073bc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactDebounce: 0.15
 --- !u!1 &5400781707838174473
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +584,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.6666667, y: 2.6666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

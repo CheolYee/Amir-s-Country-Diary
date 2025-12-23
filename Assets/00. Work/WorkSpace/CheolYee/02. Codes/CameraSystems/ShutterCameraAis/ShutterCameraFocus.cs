@@ -65,6 +65,11 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.ShutterCameraAis
             gauge?.SetVisible(false);
             gauge?.Set01(0f);
         }
+        
+        public void ForceReset()
+        {
+            ResetAll();
+        }
 
         public void SetExternalPlayer(Transform player)
         {
