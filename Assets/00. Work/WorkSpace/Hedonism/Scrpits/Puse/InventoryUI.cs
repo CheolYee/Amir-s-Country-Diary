@@ -1,10 +1,25 @@
 using UnityEngine;
 using PBG_01_PUSE;
+using _00._Work.Resources._02._Codes.Utils;
 
 public class InventoryUI : MonoBehaviour
 {
     [Header("Slots (Size = 3)")]
     [SerializeField] private InventorySlotUI[] slotUIs;
+
+    [SerializeField] private InputSo inputSo;
+
+    private void Awake()
+    {
+        if (inputSo == null)
+        {
+            Debug.LogError("InventoryUI: InputSo 안 들어옴");
+            return;
+        }
+
+        // 여기서 Inventory의 inputSo를 정의해준다
+        Inventory.Instance.SetInputSo(inputSo);
+    }
 
     private void Start()
     {

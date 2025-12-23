@@ -98892,6 +98892,7 @@ MonoBehaviour:
   - {fileID: 1724455927}
   - {fileID: 819047740}
   - {fileID: 1171625015}
+  inputSo: {fileID: 11400000, guid: 908a32d69f3ee0a448e02660d03a704f, type: 2}
 --- !u!114 &1934565401
 MonoBehaviour:
   m_ObjectHideFlags: 0

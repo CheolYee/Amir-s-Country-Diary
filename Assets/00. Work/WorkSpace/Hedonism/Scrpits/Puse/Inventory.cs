@@ -25,7 +25,7 @@ namespace PBG_01_PUSE
     public class Inventory : MonoSingleton<Inventory>
     {
         [Header("Settings")]
-        [SerializeField] private InputSo inputSo;
+        private InputSo inputSo;
         [SerializeField] private int maxSlots = 3;
 
         [Header("Data")]
@@ -44,10 +44,26 @@ namespace PBG_01_PUSE
                 slots = new List<InventorySlot>();
                 for (int i = 0; i < maxSlots; i++) slots.Add(new InventorySlot());
             }
+
+
+
         }
+
+        public void SetInputSo(InputSo so)
+        {
+            if (so == null)
+            {
+                Debug.LogError("Inventory: 전달된 InputSo가 null");
+                return;
+            }
+
+            inputSo = so;
+        }
+
 
         private void Start()
         {
+
             if (inputSo != null)
             {
                 inputSo.OnInventory1KeyPressed += () => UseItem(0);
