@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fuse
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: hubggyv
-  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemName: "\uD4E8\uC988"
+  itemSprite: {fileID: 1889537702765113337, guid: 33234324c82ca824aa014015bba659b7, type: 3}
   itemValue: 0
-  itemTooltip: vghfghj
+  itemTooltip: "\uBC1C\uC804\uAE30\uC5D0 \uD544\uC694\uD55C \uC911\uC694 \uC7AC\uB8CC\uC785\uB2C8\uB2E4"
