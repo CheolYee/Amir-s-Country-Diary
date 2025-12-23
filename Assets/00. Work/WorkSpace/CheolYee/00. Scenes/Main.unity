@@ -1115,9 +1115,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2995916180207795115, guid: 4216454a98b4be143a5700d8ca8a978b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 5915051164671022448}
+    - target: {fileID: 2995916180207795115, guid: 4216454a98b4be143a5700d8ca8a978b, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995916180207795115, guid: 4216454a98b4be143a5700d8ca8a978b, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995916180207795115, guid: 4216454a98b4be143a5700d8ca8a978b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995916180207795115, guid: 4216454a98b4be143a5700d8ca8a978b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1528814165
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995916180207795115, guid: 4216454a98b4be143a5700d8ca8a978b, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5363559421454356139, guid: 4216454a98b4be143a5700d8ca8a978b, type: 3}
       propertyPath: m_Name
       value: GeneratorUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363559421454356139, guid: 4216454a98b4be143a5700d8ca8a978b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
