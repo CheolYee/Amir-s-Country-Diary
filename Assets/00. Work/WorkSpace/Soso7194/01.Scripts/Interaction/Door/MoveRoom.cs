@@ -124,21 +124,20 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
 
         private IEnumerator CheckLockPickState()
         {
-            // 락픽 UI가 켜져 있는 동안 대기
-            while (_lockPick != null && _lockPick.gameObject.activeSelf)
+            // activeSelf는 부모가 꺼져도 true일 수 있습니다.
+            // activeInHierarchy는 부모가 꺼지면 false가 되므로 화면에 보이는지 정확히 알 수 있습니다.
+            while (_lockPick != null && _lockPick.gameObject.activeInHierarchy)
             {
                 yield return null;
             }
 
-            // [수정] 락픽 UI가 꺼졌을 때
+            // UI가 사라지면 여기로 넘어옴
             if (_isLocked)
             {
-                // 여전히 잠겨 있다면 실패한 것이지만, 
-                // _isBroken을 true로 만들지 않으므로 다시 상호작용 가능합니다.
                 Debug.Log("락픽 실패. 다시 시도하세요.");
             }
 
-            // 성공이든 실패든 플레이어 움직임은 풀어줍니다.
+            // 플레이어 움직임 복구
             EndLockPicking();
         }
 

@@ -15,7 +15,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Manager
 
         private Dictionary<int, Collider2D> floorBoundDict;
 
-        private void Awake()
+        protected override void Awake()
         {
             floorBoundDict = new Dictionary<int, Collider2D>();
             foreach (var data in floorDataList)

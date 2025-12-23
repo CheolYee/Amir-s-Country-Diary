@@ -235,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 1281780272874177544, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 8642128357592301590}
+      objectReference: {fileID: 2845934716529111315}
     - target: {fileID: 1519476490533340639, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -590,7 +590,7 @@ PrefabInstance:
     - target: {fileID: 1281780272874177544, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 8642128357592301590}
+      objectReference: {fileID: 2845934716529111315}
     - target: {fileID: 2366170457812409849, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: m_Name
       value: inDoor
@@ -1173,7 +1173,7 @@ PrefabInstance:
     - target: {fileID: 1281780272874177544, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 8642128357592301590}
+      objectReference: {fileID: 2845934716529111315}
     - target: {fileID: 2366170457812409849, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: m_Name
       value: inDoor (1)
@@ -76322,7 +76322,7 @@ PrefabInstance:
     - target: {fileID: 1281780272874177544, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 8642128357592301590}
+      objectReference: {fileID: 2845934716529111315}
     - target: {fileID: 2366170457812409849, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: m_Name
       value: inDoor (1)
@@ -76979,7 +76979,7 @@ PrefabInstance:
     - target: {fileID: 1281780272874177544, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 8642128357592301590}
+      objectReference: {fileID: 2845934716529111315}
     - target: {fileID: 2366170457812409849, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: m_Name
       value: inDoor
@@ -77216,7 +77216,7 @@ PrefabInstance:
     - target: {fileID: 1281780272874177544, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 8642128357592301590}
+      objectReference: {fileID: 2845934716529111315}
     - target: {fileID: 2366170457812409849, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
       propertyPath: m_Name
       value: inDoor (1)
