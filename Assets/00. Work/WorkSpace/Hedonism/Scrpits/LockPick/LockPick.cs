@@ -43,6 +43,10 @@ namespace PBG_01_LockPick
             noiseEmitter = GetComponentInChildren<NoiseEmitter>();
         }
 
+        void Start()
+        {
+        }
+
 
         void Update()
         {
@@ -65,7 +69,6 @@ namespace PBG_01_LockPick
 
         private void OnEnable()
         {
-            parent.SetActive(true);
             pickDurability = 100f;
             targetAngle = Random.Range(180f, 0f);
             originRot = cam.transform.localRotation;
@@ -143,7 +146,7 @@ namespace PBG_01_LockPick
 
         public void ShowLockPick()
         {
-            this.gameObject.SetActive(true);
+            parent.gameObject.SetActive(true);
             enabled = true;
         }
 

@@ -27,6 +27,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
 
         private bool _isLocked = false; 
         private LockPick _lockPick;
+        [SerializeField] private GameObject _parent;
         
         private bool _isUsingLockPick = false; 
 
@@ -64,7 +65,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
                 {
                     _lockPick = childLockPick;
                     _lockPick.OnUnlocked += UnlockDoor; 
-                    _lockPick.gameObject.SetActive(false); 
+                    _parent.SetActive(false);
                 }
                 else
                 {
@@ -73,7 +74,11 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
             }
             else
             {
-                if (childLockPick != null) childLockPick.gameObject.SetActive(false);
+                if (childLockPick != null)
+                {
+                    childLockPick.gameObject.SetActive(false);
+                    _parent.SetActive(false);
+                }
                 _lockPick = null;
             }
         }
