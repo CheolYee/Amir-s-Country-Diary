@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 807130369
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_Sprite: {fileID: -7571475414092020286, guid: 208dc187bb2bb6749aae7f131ed5f5f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -115,7 +115,7 @@ Animator:
   m_GameObject: {fileID: 123669292803042087}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: a120eba62adb2644e8706145961ee2c3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 437ab3f9b0c674b4dbb1a36e7965fa69, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -273,6 +273,7 @@ MonoBehaviour:
   playOnEnable: 0
   useManagedVolume: 1
   baseAudioVolume: 1
+  noiseSourceKind: 0
 --- !u!1 &4132435217032855781
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +420,7 @@ MonoBehaviour:
   playOnEnable: 0
   useManagedVolume: 1
   baseAudioVolume: 1
+  noiseSourceKind: 0
 --- !u!1 &4175523583803349157
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +492,7 @@ Transform:
   m_GameObject: {fileID: 5085233686982313548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.26, z: 0}
+  m_LocalPosition: {x: 0, y: -1.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -508,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fddee3af1e44f14a77024787a13c509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 3
   xSpeedParam: {fileID: 11400000, guid: 143afd38b08fb1e4286e30b1c9746d98, type: 2}
   whatIsGround:
     serializedVersion: 2
@@ -526,7 +528,7 @@ GameObject:
   - component: {fileID: 1795124545113205427}
   - component: {fileID: 6493757252400876652}
   - component: {fileID: 1893612426774846641}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,6 +569,25 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   bossStateList: {fileID: 11400000, guid: 0cae2674d251067439f6d464b99d2427, type: 2}
+  patrolMul: 0.9
+  runMul: 1.5
+  patrolMinSec: 10
+  patrolMaxSec: 15
+  patrolMoveMinSec: 4
+  patrolMoveMaxSec: 5
+  patrolPauseMinSec: 1
+  patrolPauseMaxSec: 1.5
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  wallCheckDistance: 1.7
+  wallCheckOffset: {x: 0.2, y: 0}
+  attackBoxSize: {x: 1.2, y: 1.6}
+  attackBoxOffset: {x: 0.8, y: 0}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  randomExitSide: 1
 --- !u!50 &6493757252400876652
 Rigidbody2D:
   serializedVersion: 5

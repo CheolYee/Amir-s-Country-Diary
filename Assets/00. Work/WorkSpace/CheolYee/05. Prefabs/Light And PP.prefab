@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7564325247538191614}
   - component: {fileID: 7479092469987811862}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: UI_PP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666240566062618417}
   - component: {fileID: 3147517351325354055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UILIght
   m_TagString: Untagged
   m_Icon: {fileID: 0}

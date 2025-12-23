@@ -8,6 +8,7 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.CameraFlashs
     public class PhotoFlashUI : MonoBehaviour
     {
         [SerializeField] private Image flashImage;
+        [SerializeField] private NoiseEmitter flashSoundEmitter;
 
         private Coroutine _co;
 
@@ -23,6 +24,7 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.CameraFlashs
         {
             if (flashImage == null) return;
             if (_co != null) StopCoroutine(_co);
+            flashSoundEmitter.EmitOnce();
             _co = StartCoroutine(FlashRoutine(evt.Duration, evt.PeakAlpha));
         }
 

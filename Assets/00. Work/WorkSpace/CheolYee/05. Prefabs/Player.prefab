@@ -641,6 +641,104 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &7069802284921098974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5600378231141529186}
+  - component: {fileID: 5098501944802840549}
+  m_Layer: 0
+  m_Name: CameraPhotoConsequenceDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5600378231141529186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069802284921098974}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 522316276106305680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5098501944802840549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7069802284921098974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a39402f57142a0bbf387888b28e363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorTracker: {fileID: 4451921699896868791}
+  flashDuration: 0.12
+  flashPeakAlpha: 0.85
+  alertDuration: 2
+  alertTexts:
+  - "\uB204\uAD70\uAC00\uAC00 \uCAD3\uC544\uC624\uB294 \uC18C\uB9AC\uAC00 \uB4E4\uB9BD\uB2C8\uB2E4."
+  - "\uBD88\uAE38\uD55C \uAE30\uCC99\uC774 \uB290\uAEF4\uC9D1\uB2C8\uB2E4."
+  - "\uBB34\uC5B8\uAC00\uAC00 \uC774 \uCE35\uC5D0 \uB098\uD0C0\uB0AC\uC2B5\uB2C8\uB2E4."
+  spawnBoss: 1
+--- !u!1 &7310209698366614608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 902564950023685935}
+  - component: {fileID: 4451921699896868791}
+  m_Layer: 6
+  m_Name: PlayerFloorTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &902564950023685935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310209698366614608}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 522316276106305680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4451921699896868791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310209698366614608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df41c0a20a4419aa481e8189782539e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7873877216738317859
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +914,8 @@ Transform:
   - {fileID: 1214214929369904720}
   - {fileID: 1407043891547069733}
   - {fileID: 5096199334505828628}
+  - {fileID: 902564950023685935}
+  - {fileID: 5600378231141529186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3406582555620828373

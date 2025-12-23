@@ -146,3 +146,4 @@ MonoBehaviour:
   playOnEnable: 0
   useManagedVolume: 1
   baseAudioVolume: 1
+  noiseSourceKind: 0

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _00._Work.Resources._02._Codes;
 using _00._Work.WorkSpace.CheolYee._02._Codes.EventSysyems;
 using UnityEngine;
 
@@ -79,11 +80,17 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
             _audio.clip = PickClipForLoop();
             _audio.loop = preset.loop;
         }
+        
+        private float GlobalSfxVol()
+        {
+            return SoundManager.Instance != null ? SoundManager.Instance.GetSfxVolume() : 1f;
+        }
 
         private void ApplyInitialVolume()
         {
             if (_audio == null) return;
-            _audio.volume = useManagedVolume ? 0f : baseAudioVolume;
+            _audio.volume = baseAudioVolume * GlobalSfxVol();
+            if (useManagedVolume) _audio.volume = 0f;
         }
 
         public void EmitOnce()
@@ -93,9 +100,10 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
             var c = PickClipForOneShot();
             if (c != null)
             {
-                // 매니저 볼륨 쓰더라도, 클립 재생은 해두고 볼륨은 매니저가 올려줄 수 있음
                 _audio.loop = false;
-                _audio.PlayOneShot(c, useManagedVolume ? 1f : baseAudioVolume);
+
+                // 핵심: 여기 0 넣지 말기
+                _audio.PlayOneShot(c, 1f);
             }
 
             RaiseNoiseEvent();
@@ -145,8 +153,8 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
         {
             if (_audio == null) return;
 
-            // baseAudioVolume까지 곱해줌(연출/디버깅용)
-            _audio.volume = Mathf.Clamp01(volume01) * baseAudioVolume;
+            // 매니저가 최종 볼륨 결정 (distance factor * base * global)
+            _audio.volume = Mathf.Clamp01(volume01) * baseAudioVolume * GlobalSfxVol();
         }
 
         private void StartPulseRoutine()

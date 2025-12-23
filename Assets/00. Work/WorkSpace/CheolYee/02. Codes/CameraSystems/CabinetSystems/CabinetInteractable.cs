@@ -85,5 +85,13 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems.CabinetSystems
             if (controller == null) return;
             controller.ClearCandidate(this);
         }
+        
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            var controller = other.GetComponentInChildren<PlayerCabinetController>();
+            if (controller == null) return;
+
+            controller.SetCandidate(this);
+        }
     }
 }
