@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: f3642263b84600b4cbbdebb8667e16ec
+guid: 45e66ea2bcc3581459c9fb1ad067d1e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5213229242370633579
-    second: Door_0
+      213: -4073907460341403766
+    second: ClassRoom_0
+  - first:
+      213: 2854563566119450682
+    second: ClassRoom_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +99,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door_0
+      name: ClassRoom_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 94
-        height: 84
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6f2e24006c195840800000000000000
-      internalID: 5213229242370633579
+      spriteID: a8f6982dfb29677c0800000000000000
+      internalID: -4073907460341403766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClassRoom_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a38725370727d9720800000000000000
+      internalID: 2854563566119450682
       vertices: []
       indices: 
       edges: []
@@ -138,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 39979f5fdee3a254488a46ea48ec6c2b
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Door_0: 5213229242370633579
+      ClassRoom_0: -4073907460341403766
+      ClassRoom_1: 2854563566119450682
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: f3642263b84600b4cbbdebb8667e16ec
+guid: bbbdaa09be591d340a2706b6fd015925
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5213229242370633579
-    second: Door_0
+      213: -7963465660513507249
+    second: TeachersRoom-Sheet_0
+  - first:
+      213: 3652076718461606440
+    second: TeachersRoom-Sheet_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +99,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door_0
+      name: TeachersRoom-Sheet_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 94
-        height: 84
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6f2e24006c195840800000000000000
-      internalID: 5213229242370633579
+      spriteID: f48221c8c261c7190800000000000000
+      internalID: -7963465660513507249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeachersRoom-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82ad0680d68cea230800000000000000
+      internalID: 3652076718461606440
       vertices: []
       indices: 
       edges: []
@@ -138,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2dedd026a913cfa488a2638c79ac94e4
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Door_0: 5213229242370633579
+      TeachersRoom-Sheet_0: -7963465660513507249
+      TeachersRoom-Sheet_1: 3652076718461606440
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

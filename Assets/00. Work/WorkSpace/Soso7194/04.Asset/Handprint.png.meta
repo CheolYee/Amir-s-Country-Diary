@@ -1,10 +1,31 @@
 fileFormatVersion: 2
-guid: f3642263b84600b4cbbdebb8667e16ec
+guid: 8d8aa5c4847d1f3459e638c27cdff9a1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5213229242370633579
-    second: Door_0
+      213: -128339782343517987
+    second: Handprint_0
+  - first:
+      213: 1870565788339039204
+    second: Handprint_1
+  - first:
+      213: -1567036184446775540
+    second: Handprint_2
+  - first:
+      213: -5154721382897553928
+    second: Handprint_3
+  - first:
+      213: -7379648990491201229
+    second: Handprint_4
+  - first:
+      213: 5924843654180873364
+    second: Handprint_5
+  - first:
+      213: -9031615026336608472
+    second: Handprint_6
+  - first:
+      213: -7867330691518921257
+    second: Handprint_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +117,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door_0
+      name: Handprint_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 94
-        height: 84
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +136,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6f2e24006c195840800000000000000
-      internalID: 5213229242370633579
+      spriteID: dd81dded5ab083ef0800000000000000
+      internalID: -128339782343517987
       vertices: []
       indices: 
       edges: []
@@ -138,7 +146,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 04d51c1218d1e80409b2868ed7af3f5f
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +156,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Door_0: 5213229242370633579
+      Handprint_0: -128339782343517987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
