@@ -143,6 +143,7 @@ namespace PBG_01_PUSE
             return true;
         }
 
+
         public List<InventorySlot> GetSlots() => slots;
     }
 }
