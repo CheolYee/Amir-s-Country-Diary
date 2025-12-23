@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using _00._Work.Resources._02._Codes.Utils;
+using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
 using PBG_01_LockPick;
 using Unity.Cinemachine; 
@@ -14,6 +15,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
         public InputSo inputSo;
         public enum DoorType { Enter, Exit, Move}
         public DoorType type;
+        public NoiseEmitter noiseEmitter;
 
         [Header("If Enter Type")]
         public int roomIndexToGo = 0;
@@ -98,6 +100,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
                 return;
             }
 
+            noiseEmitter.Begin();
             switch (type)
             {
                 case DoorType.Enter:

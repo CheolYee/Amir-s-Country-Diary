@@ -511,6 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 98539694}
   - component: {fileID: 98539695}
+  - component: {fileID: 98539696}
   m_Layer: 0
   m_Name: AdministrativeOfficeBounder
   m_TagString: Untagged
@@ -579,6 +580,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 48, y: 11.095465}
   m_EdgeRadius: 0
+--- !u!114 &98539696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98539693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 1
 --- !u!1001 &116884747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -713,15 +728,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confiner: {fileID: 8341103589715476402}
+  roomSpawnPoints: {fileID: 8228535667783525819}
   floorDataList:
   - floorName: 1F
-    floorIndex: 1
+    floorIndex: 0
     boundCollider: {fileID: 1246007469}
   - floorName: 2F
-    floorIndex: 2
+    floorIndex: 3
     boundCollider: {fileID: 306721329}
   - floorName: 3F
-    floorIndex: 3
+    floorIndex: 6
     boundCollider: {fileID: 260360188}
 --- !u!4 &124958600
 Transform:
@@ -847,6 +863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 260360187}
   - component: {fileID: 260360188}
+  - component: {fileID: 260360189}
   m_Layer: 0
   m_Name: 3FBounder
   m_TagString: Untagged
@@ -915,6 +932,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 128, y: 13.933411}
   m_EdgeRadius: 0
+--- !u!114 &260360189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260360186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 6
 --- !u!1 &265849375 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5795555425830629425, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
@@ -994,6 +1025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 306721328}
   - component: {fileID: 306721329}
+  - component: {fileID: 306721330}
   m_Layer: 0
   m_Name: 2FBounder
   m_TagString: Untagged
@@ -1062,6 +1094,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 128, y: 12.796467}
   m_EdgeRadius: 0
+--- !u!114 &306721330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306721327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 3
 --- !u!1 &312995205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5795555425830629425, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
@@ -6260,6 +6306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 738401538}
   - component: {fileID: 738401537}
+  - component: {fileID: 738401539}
   m_Layer: 0
   m_Name: CafeteriaBounder
   m_TagString: Untagged
@@ -6328,6 +6375,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1284707122}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738401539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738401536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 2
 --- !u!1 &790427784
 GameObject:
   m_ObjectHideFlags: 0
@@ -83291,6 +83352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1205866321}
   - component: {fileID: 1205866322}
+  - component: {fileID: 1205866323}
   m_Layer: 0
   m_Name: Teacher'sRoomBounder
   m_TagString: Untagged
@@ -83359,6 +83421,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 89, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &1205866323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205866320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 5
 --- !u!1 &1246007467
 GameObject:
   m_ObjectHideFlags: 0
@@ -83369,6 +83445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1246007468}
   - component: {fileID: 1246007469}
+  - component: {fileID: 1246007470}
   m_Layer: 0
   m_Name: 1FBounder
   m_TagString: Untagged
@@ -83437,6 +83514,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 128, y: 10.409988}
   m_EdgeRadius: 0
+--- !u!114 &1246007470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246007467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 0
 --- !u!1 &1261045308
 GameObject:
   m_ObjectHideFlags: 0
@@ -83447,6 +83538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1261045309}
   - component: {fileID: 1261045310}
+  - component: {fileID: 1261045311}
   m_Layer: 0
   m_Name: ClassroomABounder
   m_TagString: Untagged
@@ -83515,6 +83607,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 62, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &1261045311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261045308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 7
 --- !u!1 &1278519752 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5795555425830629425, guid: f7d2e079e935e114b99975b7434e19da, type: 3}
@@ -88333,6 +88439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1502176640}
   - component: {fileID: 1502176641}
+  - component: {fileID: 1502176642}
   m_Layer: 0
   m_Name: FoyerBounder
   m_TagString: Untagged
@@ -88401,6 +88508,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 34, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &1502176642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502176639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 4
 --- !u!1 &1520646095
 GameObject:
   m_ObjectHideFlags: 0
@@ -97451,6 +97572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2023574798}
   - component: {fileID: 2023574797}
+  - component: {fileID: 2023574799}
   m_Layer: 0
   m_Name: ClassroomBBounder
   m_TagString: Untagged
@@ -97519,6 +97641,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 209132167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023574799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023574796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48c8d08ae4d4aff92660f29c4b2dc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  floorId: 8
 --- !u!1001 &2035996127
 PrefabInstance:
   m_ObjectHideFlags: 0
