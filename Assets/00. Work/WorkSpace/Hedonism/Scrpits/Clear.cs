@@ -2,11 +2,11 @@ using _00._Work.Resources._02._Codes.Utils;
 using _00._Work.Resources._04._Templates.FadeManager;
 using UnityEngine;
 
-public class Die : MonoBehaviour
+public class Clear : MonoBehaviour
 {
-    public static Die Instance;
+    public static Clear Instance;
 
-    [SerializeField] private GameObject dieCanvas;
+    [SerializeField] private GameObject clearCanvas;
 
     void Awake()
     {
@@ -21,34 +21,27 @@ public class Die : MonoBehaviour
     }
     void Start()
     {
-        dieCanvas.SetActive(false);
+        clearCanvas.SetActive(false);
     }
 
-    public void OnDie()
+    public void OnClear()
     {
         FadeManager.Instance.FadeInOut();
         Invoke("SetTrue", FadeManager.Instance.fadeDuration);
     }
 
-    public void Revive()
-    {
-        FadeManager.Instance.FadeInOut();
-        Invoke("SetFalse", FadeManager.Instance.fadeDuration);
-    }
-
-    public void QuitGame()
+    public void ReturnTitle()
     {
         FadeManager.Instance.FadeToSceneAsync(0);
     }
 
-    public void SetTrue()
+    public void QuitGame()
     {
-        dieCanvas.SetActive(true);
+        Application.Quit();
     }
 
-
-    private void SetFalse()
+    public void SetTrue()
     {
-        dieCanvas.SetActive(false);
+        clearCanvas.SetActive(true);
     }
 }

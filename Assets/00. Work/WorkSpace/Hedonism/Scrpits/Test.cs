@@ -8,5 +8,10 @@ public class Test : MonoBehaviour
         {
             Die.Instance.OnDie();
         }
+
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            Clear.Instance.OnClear();
+        }
     }
 }
