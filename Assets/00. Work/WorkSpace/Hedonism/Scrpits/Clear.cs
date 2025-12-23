@@ -32,6 +32,7 @@ public class Clear : MonoBehaviour
 
     public void ReturnTitle()
     {
+        Time.timeScale = 1f;
         FadeManager.Instance.FadeToSceneAsync(0);
     }
 
@@ -43,5 +44,6 @@ public class Clear : MonoBehaviour
     public void SetTrue()
     {
         clearCanvas.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

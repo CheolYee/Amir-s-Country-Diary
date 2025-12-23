@@ -27,6 +27,7 @@ namespace _00._Work.Resources._04._Templates.FadeManager
 
         private void Start()
         {
+            Application.targetFrameRate = 60;
             FadeOut();
         }
 

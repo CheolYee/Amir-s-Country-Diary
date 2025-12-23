@@ -652,7 +652,8 @@ GameObject:
   - component: {fileID: 5818345325013762674}
   - component: {fileID: 6948925855396000112}
   - component: {fileID: 5182709241065484144}
-  m_Layer: 5
+  - component: {fileID: 4492295541800614168}
+  m_Layer: 8
   m_Name: ClearCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +689,7 @@ Canvas:
   m_GameObject: {fileID: 7064223811231368425}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -696,11 +697,11 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1528814165
+  m_SortingOrder: 437
   m_TargetDisplay: 0
 --- !u!114 &5818345325013762674
 MonoBehaviour:
@@ -714,10 +715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -755,6 +756,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearCanvas: {fileID: 3489201554127094349}
+--- !u!114 &4492295541800614168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064223811231368425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf21c00a2d9404790e2cf2ea0a55947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7811658145309528660
 GameObject:
   m_ObjectHideFlags: 0

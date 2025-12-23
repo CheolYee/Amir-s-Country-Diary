@@ -38,8 +38,10 @@ public class Die : MonoBehaviour
 
     public void QuitGame()
     {
-        FadeManager.Instance.FadeToSceneAsync(0);
+        Application.Quit();
     }
+    
+    public void ReturnTitle() => FadeManager.Instance.FadeToSceneAsync(0);
 
     public void SetTrue()
     {
@@ -49,6 +51,7 @@ public class Die : MonoBehaviour
 
     private void SetFalse()
     {
+        Time.timeScale = 1f;
         dieCanvas.SetActive(false);
     }
 }
