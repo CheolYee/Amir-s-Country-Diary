@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 807130369
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 5213229242370633579, guid: f3642263b84600b4cbbdebb8667e16ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,7 +145,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.9375, y: 2.625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -213,6 +213,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2056379625652574287, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056379625652574287, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056379625652574287, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 807130369
+      objectReference: {fileID: 0}
     - target: {fileID: 4200528141295488492, guid: 3275b5ed5341b64429a4c044e3d429de, type: 3}
       propertyPath: m_Name
       value: LockPic
@@ -242,7 +254,7 @@ PrefabInstance:
     - target: {fileID: 3212984318125235538, guid: 762f494eef9179a40be9a5d16bc653b0, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 66b135d287523fa499a9b80d14bd5ffa, type: 3}
+      objectReference: {fileID: 8300000, guid: 847b96ac47b4c8f4d84b1b1ff7b542da, type: 3}
     - target: {fileID: 3846018059736141649, guid: 762f494eef9179a40be9a5d16bc653b0, type: 3}
       propertyPath: preset
       value: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoorOpenSound
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 66b135d287523fa499a9b80d14bd5ffa, type: 3}
+  - {fileID: 8300000, guid: 847b96ac47b4c8f4d84b1b1ff7b542da, type: 3}
   clipSelectMode: 0
   avoidImmediateRepeat: 1
   loop: 0
