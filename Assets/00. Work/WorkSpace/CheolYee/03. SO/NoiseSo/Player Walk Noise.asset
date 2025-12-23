@@ -22,8 +22,8 @@ MonoBehaviour:
   loop: 0
   pulseInterval: 0.2
   loudness: 0.15
-  maxRange: 12
-  halfDistance: 5
+  maxRange: 5
+  halfDistance: 3
   type: 0
   tag: 1
   uiGainMultiplier: 0.1

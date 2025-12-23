@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CabinetDoor
+  m_Controller: {fileID: 9100000, guid: ba687112ee26be848aff31b68c54771f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a3deb02003f674747ab968d81181fc33, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 82a535a014da2e64aa89fef4b5f589b5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3c8375c66b7619f4ebf13d35fce70ff3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 369d9fa57998ec6459d8c587fb5f718c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4b2ee456499e8fd4184f5e6c3f09ee8f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9642657d69736aa4fbfeda1171d201bf, type: 2}

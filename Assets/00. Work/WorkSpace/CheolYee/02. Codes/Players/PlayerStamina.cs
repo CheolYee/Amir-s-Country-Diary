@@ -1,4 +1,5 @@
-﻿using _00._Work.WorkSpace.CheolYee._02._Codes.Agents;
+﻿using System;
+using _00._Work.WorkSpace.CheolYee._02._Codes.Agents;
 using _00._Work.WorkSpace.CheolYee._02._Codes.EventSysyems;
 using UnityEngine;
 
@@ -41,10 +42,13 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.Players
             _lastUseTime = -999f;
             _wasDepleted = false;
             _regenBlockedUntil = 0f;
+        }
 
+        private void Start()
+        {
             PublishChanged();
         }
-        
+
         private void OnEnable()
         {
             Bus<StaminaConsumeEvent>.OnEvent += OnConsume;
