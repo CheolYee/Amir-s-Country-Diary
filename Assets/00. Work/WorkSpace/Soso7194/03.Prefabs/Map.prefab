@@ -5205,10 +5205,10 @@ MonoBehaviour:
     count: 8
   - label: Plank
     itemSo: {fileID: 11400000, guid: 8528f3f1a26808244bb83508ae13b9d4, type: 2}
-    count: 3
+    count: 4
   - label: Wire
     itemSo: {fileID: 11400000, guid: 1c74f793fdd5ae248a6c5c73f12cbaed, type: 2}
-    count: 3
+    count: 4
   _spawnPoints:
   - {fileID: 3170073566514304047}
   - {fileID: 8250496903998031092}
@@ -24781,6 +24781,7 @@ GameObject:
   - component: {fileID: 1660875354769276095}
   - component: {fileID: 5277354456012971623}
   - component: {fileID: 4318833332220304142}
+  - component: {fileID: 3083608942174951363}
   m_Layer: 0
   m_Name: Entrance
   m_TagString: Untagged
@@ -24874,6 +24875,52 @@ MonoBehaviour:
   sprite:
   - {fileID: -1739629994374481548, guid: 8d988db10e272a6498b52ca35fc8f133, type: 3}
   - {fileID: -6562767434736402550, guid: b981927b230e0154c97f15f583aead04, type: 3}
+--- !u!61 &3083608942174951363
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5129019514233144791}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.90625, y: 2.84375}
+    newSize: {x: 2.90625, y: 2.84375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.90625, y: 2.84375}
+  m_EdgeRadius: 0
 --- !u!1 &5244252523811809190
 GameObject:
   m_ObjectHideFlags: 0
@@ -104450,23 +104497,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6396762547248632598, guid: 0bbfcd2e502075c45a256d52313a986e, type: 3}
       propertyPath: recipes.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6396762547248632598, guid: 0bbfcd2e502075c45a256d52313a986e, type: 3}
       propertyPath: recipes.Array.data[1].requiredItem
       value: 
-      objectReference: {fileID: 11400000, guid: 8528f3f1a26808244bb83508ae13b9d4, type: 2}
+      objectReference: {fileID: 11400000, guid: 1c74f793fdd5ae248a6c5c73f12cbaed, type: 2}
     - target: {fileID: 6396762547248632598, guid: 0bbfcd2e502075c45a256d52313a986e, type: 3}
       propertyPath: recipes.Array.data[2].requiredItem
       value: 
-      objectReference: {fileID: 11400000, guid: 7326abd2fc1f2304ead92005f8d7ada6, type: 2}
+      objectReference: {fileID: 11400000, guid: 8528f3f1a26808244bb83508ae13b9d4, type: 2}
     - target: {fileID: 6396762547248632598, guid: 0bbfcd2e502075c45a256d52313a986e, type: 3}
       propertyPath: recipes.Array.data[1].requiredAmount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6396762547248632598, guid: 0bbfcd2e502075c45a256d52313a986e, type: 3}
       propertyPath: recipes.Array.data[2].requiredAmount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7216645223523547801, guid: 0bbfcd2e502075c45a256d52313a986e, type: 3}
       propertyPath: m_Sprite
