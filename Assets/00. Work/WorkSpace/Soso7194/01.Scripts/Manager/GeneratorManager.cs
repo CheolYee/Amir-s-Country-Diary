@@ -7,20 +7,16 @@ namespace PBG_01_PUSE
 {
     public class GeneratorManager : MonoSingleton<GeneratorManager>
     {
-        [Header("Door Settings")]
-        [SerializeField] private GameObject mainDoor; 
-
         // 층별 전력 상태 (Key: 층수, Value: 전력ON/OFF)
         private Dictionary<int, bool> floorPowerState = new Dictionary<int, bool>();
         
         // UI 갱신을 위한 이벤트
         public event Action OnPowerStateChanged;
+        public event Action OnAllPowered;
 
         protected override void Awake()
         {
             base.Awake();
-            
-            mainDoor.SetActive(false);
             
             // 1, 2, 3층 초기화 (모두 꺼짐)
             floorPowerState[1] = false;
@@ -58,7 +54,7 @@ namespace PBG_01_PUSE
             }
 
             Debug.Log("모든 층 전력 복구 완료! 정문 개방.");
-            if (mainDoor != null) mainDoor.SetActive(true);
+            OnAllPowered?.Invoke();
         }
     }
 }
