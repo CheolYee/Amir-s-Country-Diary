@@ -19,7 +19,7 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.Agents
         private float _moveSpeedMultiplier;
         private float _originalGravityScale;
         public bool IsGrounded { get; private set; }
-        public bool CanManualMovement { get; set; }
+        public bool CanManualMovement { get; set; } = true;
 
         public event Action<Vector2> OnVelocityChange;
         public void Initialize(Agent agent)
@@ -70,7 +70,7 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.Agents
 
         private void MoveCharacter()
         {
-            if (CanManualMovement == false)
+            if (CanManualMovement)
             {
                 _renderer.FlipController(_movementX);
                 _rigidbody.linearVelocityX = _movementX * moveSpeed * _moveSpeedMultiplier;

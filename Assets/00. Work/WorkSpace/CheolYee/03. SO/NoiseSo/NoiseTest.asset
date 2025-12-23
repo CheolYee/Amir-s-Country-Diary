@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fee5b4ad2a40f2ba6bd410f2ef0afa, type: 3}
   m_Name: NoiseTest
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: de0ff146cf82cd7489d57df08e100f7b, type: 3}
   clips:
   - {fileID: 8300000, guid: de0ff146cf82cd7489d57df08e100f7b, type: 3}
   clipSelectMode: 0
@@ -24,5 +23,5 @@ MonoBehaviour:
   halfDistance: 5
   type: 0
   tag: 4
-  uiGainMultiplier: 1
+  uiGainMultiplier: 14.06
   cameraGainMultiplier: 1

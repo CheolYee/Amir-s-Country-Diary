@@ -13,6 +13,7 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.Agents
         public event Action OnAnimationEnd;
         [field: SerializeField] public float FacingDirection { get; private set; } = 1f;//1f가 오른쪽 보는거다.
         public Sprite CurrentSprite => _spriteRenderer.sprite;
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
         public void Initialize(Agent agent)
         {

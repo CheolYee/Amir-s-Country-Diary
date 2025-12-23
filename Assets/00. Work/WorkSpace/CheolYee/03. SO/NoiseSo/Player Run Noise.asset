@@ -22,7 +22,7 @@ MonoBehaviour:
   loop: 0
   pulseInterval: 0.2
   loudness: 0.358
-  maxRange: 12
+  maxRange: 9
   halfDistance: 5
   type: 2
   tag: 4

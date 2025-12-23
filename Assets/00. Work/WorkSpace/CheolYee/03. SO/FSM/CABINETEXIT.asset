@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CABINETEXIT
   m_EditorClassIdentifier: 
   stateName: CABINETEXIT
-  className: _00._Work.WorkSpace.CheolYee._02._Codes.Players.FSMStates.PlayerCabinetEnterState
+  className: _00._Work.WorkSpace.CheolYee._02._Codes.Players.FSMStates.PlayerCabinetExitState
   stateIndex: 4
   paramSo: {fileID: 11400000, guid: 98252a7a0a21bae4daa1bc1414ebf3ad, type: 2}

@@ -67,10 +67,8 @@ namespace _00._Work.Resources._02._Codes.Utils
 
         public void OnInteraction(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                OnInteractionKeyPressed?.Invoke();
-            }
+            if (!context.started) return;
+            OnInteractionKeyPressed?.Invoke();
         }
 
         public void OnInventory_1(InputAction.CallbackContext context)
