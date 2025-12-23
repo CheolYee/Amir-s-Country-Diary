@@ -34,17 +34,12 @@ namespace PBG_01_LockPick
 
         public Action OnUnlocked;
 
+        public GameObject parent;
+        Quaternion originRot;
+
         void Awake()
         {
             noiseEmitter = GetComponentInChildren<NoiseEmitter>();
-        }
-
-        void Start()
-        {
-            // Start에서는 비활성화하지 않음 (MoveRoom에서 처리)
-
-            // 내구도 초기화
-            pickDurability = 100f;
         }
 
 
@@ -69,7 +64,10 @@ namespace PBG_01_LockPick
 
         private void OnEnable()
         {
+            parent.SetActive(true);
+            pickDurability = 100f;
             targetAngle = Random.Range(180f, 0f);
+            originRot = cam.transform.localRotation;
         }
 
         private void OnDisable()
@@ -120,13 +118,16 @@ namespace PBG_01_LockPick
             {
                 enabled = false; // 미니게임 종료
                 _noiseEmitter.Begin();
-                this.gameObject.SetActive(false);
-
+                parent.SetActive(false);
             }
-
-            if (pickDurability <= 50)
+            else if (pickDurability <= 50 /*&& pickDurability >= 49 || pickDurability < 10 && pickDurability > 9*/)
             {
-                cam.transform.DOShakePosition(2, 3, 10);
+                cam.transform
+                .DOShakeRotation(1f, 3f, 10)
+                .OnComplete(() =>
+                {
+                    cam.transform.DOLocalRotateQuaternion(originRot, 0.1f);
+                });
             }
         }
 
@@ -169,7 +170,7 @@ namespace PBG_01_LockPick
             currentRotate = endRotate;
             lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
 
-            this.gameObject.SetActive(false);
+            parent.SetActive(false);
         }
     }
 }
