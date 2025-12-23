@@ -15217,13 +15217,31 @@ MonoBehaviour:
   roomSpawnPoints: {fileID: 2703019080102879043}
   floorDataList:
   - floorName: 1F
-    floorIndex: 1
+    floorIndex: 0
     boundCollider: {fileID: 8610943245186138180}
   - floorName: 2F
-    floorIndex: 2
+    floorIndex: 1
     boundCollider: {fileID: 3460966895391737314}
   - floorName: 3F
+    floorIndex: 2
+    boundCollider: {fileID: 822213700297936196}
+  - floorName: 3F
     floorIndex: 3
+    boundCollider: {fileID: 822213700297936196}
+  - floorName: 3F
+    floorIndex: 4
+    boundCollider: {fileID: 822213700297936196}
+  - floorName: 3F
+    floorIndex: 5
+    boundCollider: {fileID: 822213700297936196}
+  - floorName: 3F
+    floorIndex: 6
+    boundCollider: {fileID: 822213700297936196}
+  - floorName: 3F
+    floorIndex: 7
+    boundCollider: {fileID: 822213700297936196}
+  - floorName: 3F
+    floorIndex: 8
     boundCollider: {fileID: 822213700297936196}
 --- !u!1 &4596335929376961463
 GameObject:
