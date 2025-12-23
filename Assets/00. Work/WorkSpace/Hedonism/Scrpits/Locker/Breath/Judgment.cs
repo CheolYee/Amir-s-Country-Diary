@@ -40,7 +40,6 @@ namespace PBG_01_Locker
 
         private void Miss()
         {
-                        Debug.Log("히히 븅신");
             //플레이어의 스태미나가 크게 줄어들게
             Bus<StaminaConsumeEvent>.Raise(new StaminaConsumeEvent(30f));
             
@@ -59,11 +58,11 @@ namespace PBG_01_Locker
         void OnEnable()
         {
             success = 0;
-            touchCount = UnityEngine.Random.Range(3, 5);
+            touchCount = Random.Range(3, 5);
         }
 
 
-        private void Stop()
+        public void Stop()
         {
             if (touchCount == success)
             {

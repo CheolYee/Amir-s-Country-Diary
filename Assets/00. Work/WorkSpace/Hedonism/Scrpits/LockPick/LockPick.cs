@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
-using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
+using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
 using DG.Tweening;
+using Unity.Cinemachine;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 namespace PBG_01_LockPick
@@ -25,16 +28,21 @@ namespace PBG_01_LockPick
         private float pickAngle;       // 현재 락픽 각도
         private float currentRotate;   // 현재 실린더 회전값
         private bool isUnlocked;
+        private NoiseEmitter noiseEmitter;
+        [SerializeField] private NoiseEmitter _noiseEmitter;
 
-        [SerializeField] private Camera cam;
+        [SerializeField] private CinemachineCamera cam;
 
-        void Start()
+        public Action OnUnlocked;
+
+        public GameObject parent;
+        Quaternion originRot;
+
+        void Awake()
         {
-            // 정답 각도 랜덤 설정
-            // targetAngle = Random.Range(180f, 0f);
-            Debug.Log($"[LockPick] Target Angle: {targetAngle}");
-            this.gameObject.SetActive(false);
+            noiseEmitter = GetComponentInChildren<NoiseEmitter>();
         }
+
 
         void Update()
         {
@@ -57,7 +65,10 @@ namespace PBG_01_LockPick
 
         private void OnEnable()
         {
+            parent.SetActive(true);
+            pickDurability = 100f;
             targetAngle = Random.Range(180f, 0f);
+            originRot = cam.transform.localRotation;
         }
 
         private void OnDisable()
@@ -73,7 +84,6 @@ namespace PBG_01_LockPick
 
             pickAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             pick.rotation = Quaternion.Euler(0, 0, pickAngle);
-            Debug.Log(pickAngle);
         }
 
         // 실린더 회전 시도
@@ -84,7 +94,6 @@ namespace PBG_01_LockPick
             float rotateRatio = Mathf.Clamp01(1 - angleDiff / tolerance);
 
             float maxRotate = rotateRatio * unlockAngle;
-            Debug.Log(rotateRatio);
 
             currentRotate = Mathf.Lerp(currentRotate, maxRotate, Time.deltaTime * rotateSpeed);
             lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
@@ -108,28 +117,34 @@ namespace PBG_01_LockPick
 
             if (pickDurability <= 0f)
             {
-                cam.DOShakePosition(3, 3, 0);
-                //경보음 울리기
                 enabled = false; // 미니게임 종료
-
+                _noiseEmitter.Begin();
+                parent.SetActive(false);
             }
-            else if(pickDurability <= 50 && pickDurability >= 49)
+            else if (pickDurability <= 50 /*&& pickDurability >= 49 || pickDurability < 10 && pickDurability > 9*/)
             {
-                cam.DOShakePosition(2, 2, 0);
+                cam.transform
+                .DOShakeRotation(1f, 3f, 10)
+                .OnComplete(() =>
+                {
+                    cam.transform.DOLocalRotateQuaternion(originRot, 0.1f);
+                });
             }
         }
 
         void Unlock()
         {
             if (isUnlocked) return;
+            noiseEmitter.Begin();
             isUnlocked = true;
             StartCoroutine(RotateToUnlock());
-            Debug.Log("잠금 해제 성공!");
+            OnUnlocked?.Invoke();
         }
 
-        private void ShowLockPick()
+        public void ShowLockPick()
         {
             this.gameObject.SetActive(true);
+            enabled = true;
         }
 
         private IEnumerator RotateToUnlock()
@@ -156,9 +171,7 @@ namespace PBG_01_LockPick
             currentRotate = endRotate;
             lockCore.localRotation = Quaternion.Euler(0, 0, -currentRotate);
 
-            this.gameObject.SetActive(false);
+            parent.SetActive(false);
         }
-
-        //TODO : 락핏 언락 했을 때 확 돌아가는거 수정하기
     }
 }

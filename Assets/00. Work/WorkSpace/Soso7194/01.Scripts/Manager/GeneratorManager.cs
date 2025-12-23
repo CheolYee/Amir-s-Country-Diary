@@ -19,6 +19,9 @@ namespace PBG_01_PUSE
         protected override void Awake()
         {
             base.Awake();
+            
+            mainDoor.SetActive(false);
+            
             // 1, 2, 3층 초기화 (모두 꺼짐)
             floorPowerState[1] = false;
             floorPowerState[2] = false;
@@ -55,7 +58,7 @@ namespace PBG_01_PUSE
             }
 
             Debug.Log("모든 층 전력 복구 완료! 정문 개방.");
-            if (mainDoor != null) mainDoor.SetActive(false);
+            if (mainDoor != null) mainDoor.SetActive(true);
         }
     }
 }
