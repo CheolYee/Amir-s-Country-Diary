@@ -17,3 +17,4 @@ MonoBehaviour:
   itemSprite: {fileID: -7430558899833497709, guid: 9f4186c5c2e72e04a9799c37fe0aa929, type: 3}
   itemValue: 0
   itemTooltip: "\uBC1C\uC804\uAE30\uC5D0 \uD544\uC694\uD55C \uC7AC\uB8CC\uC785\uB2C8\uB2E4"
+  itemPrefab: {fileID: 4232541692570682844, guid: ffa4a5e02ec3580469ecbb82afc8cf60, type: 3}
