@@ -8,7 +8,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private InventorySlotUI[] slotUIs;
 
     [SerializeField] private InputSo inputSo;
-
+    [SerializeField] GameObject item;
     private void Awake()
     {
         if (inputSo == null)
