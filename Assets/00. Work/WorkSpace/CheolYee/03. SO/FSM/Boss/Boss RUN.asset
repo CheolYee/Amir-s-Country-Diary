@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Boss RUN
   m_EditorClassIdentifier: 
   stateName: RUN
-  className: _00._Work.WorkSpace.CheolYee._02._Codes.BossSystems.FSM.BossChaseState
-  stateIndex: 1
+  className: _00._Work.WorkSpace.CheolYee._02._Codes.BossSystems.FSM.BossRunState
+  stateIndex: 0
   paramSo: {fileID: 11400000, guid: 3e3ebff9d5de2944098100e5dea294e3, type: 2}

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enumName: BossStates
   states:
-  - {fileID: 11400000, guid: 8cb82aa37b9bfa7418f5a7d7bb4f7aa8, type: 2}
   - {fileID: 11400000, guid: 764bf19233eccf446b9ace21c0cf0b67, type: 2}
+  - {fileID: 11400000, guid: 8cb82aa37b9bfa7418f5a7d7bb4f7aa8, type: 2}
+  - {fileID: 11400000, guid: 22c13526ef5fc90408d0e02f7963ac64, type: 2}
