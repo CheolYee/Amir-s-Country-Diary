@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74a6ae01623a43fcbca2e6165f579f53, type: 3}
-  m_Name: Boss IDLE
+  m_Name: Boss PATROL
   m_EditorClassIdentifier: 
-  stateName: IDLE
-  className: _00._Work.WorkSpace.CheolYee._02._Codes.BossSystems.FSM.BossIdleState
-  stateIndex: 0
-  paramSo: {fileID: 11400000, guid: cd1289f6f35285843ba3f1b70ce5e6c4, type: 2}
+  stateName: PATROL
+  className: _00._Work.WorkSpace.CheolYee._02._Codes.BossSystems.FSM.BossPatrolState
+  stateIndex: 1
+  paramSo: {fileID: 11400000, guid: 7c208380bd35d5547892d3d6849b736d, type: 2}

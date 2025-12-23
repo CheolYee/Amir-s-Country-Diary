@@ -1,4 +1,5 @@
-﻿using _00._Work.Resources._02._Codes.Utils;
+﻿using _00._Work.Resources._02._Codes;
+using _00._Work.Resources._02._Codes.Utils;
 using _00._Work.WorkSpace.CheolYee._02._Codes.Agents;
 using _00._Work.WorkSpace.CheolYee._02._Codes.FSMSystem;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.Players
         private void Start()
         {
             _stateMachine.ChangeState((int)PlayerStates.IDLE);
+            SoundManager.Instance?.PlayBgm(BgmId.Normal);
         }
 
         private void Update()

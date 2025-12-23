@@ -16,8 +16,8 @@ TagManager:
   - Player
   - Ground
   - PP_UI
-  - 
-  - 
+  - Boss
+  - ExitWall
   - Item
   - 
   - 

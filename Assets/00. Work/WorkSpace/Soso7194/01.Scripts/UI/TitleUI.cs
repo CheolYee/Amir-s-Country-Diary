@@ -11,10 +11,7 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.UI
         
         public void StartGame()
         {
-            FadeManager.Instance.FadeIn(() =>
-            {
-                SceneManager.LoadScene("00. Work/WorkSpace/Soso7194/00. Scenes/Map");
-            });
+            FadeManager.Instance.FadeToSceneAsync(2);
         }
 
         public void Setting()

@@ -122,6 +122,8 @@ MonoBehaviour:
   - {fileID: 5920183598566000125}
   - {fileID: 2668014035744966223}
   - {fileID: 4908389667068439076}
+  inputSo: {fileID: 11400000, guid: 908a32d69f3ee0a448e02660d03a704f, type: 2}
+  item: {fileID: 4232541692570682844, guid: ffa4a5e02ec3580469ecbb82afc8cf60, type: 3}
 --- !u!1 &4543368932477349772
 GameObject:
   m_ObjectHideFlags: 0
