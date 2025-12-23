@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
 using DG.Tweening;
+using Unity.Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -30,7 +31,7 @@ namespace PBG_01_LockPick
         private NoiseEmitter noiseEmitter;
         [SerializeField] private NoiseEmitter _noiseEmitter;
 
-        [SerializeField] private Camera cam;
+        [SerializeField] private CinemachineCamera cam;
 
         public Action OnUnlocked;
 
