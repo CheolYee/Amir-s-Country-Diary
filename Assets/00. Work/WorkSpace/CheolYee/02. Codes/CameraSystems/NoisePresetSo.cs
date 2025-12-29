@@ -43,6 +43,10 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems
         [Min(0f)] public float uiGainMultiplier = 1f;
         [Min(0f)] public float cameraGainMultiplier = 1f;
         
+        [Header("UI Noise Meter")]
+        public bool affectUiNoiseMeter = true;
+        
+        
         
         public int ClipCount => clips?.Count ?? 0;
         public AudioClip GetClip(int index)

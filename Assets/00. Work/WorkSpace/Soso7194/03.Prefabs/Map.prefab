@@ -13620,6 +13620,7 @@ MonoBehaviour:
   inputSo: {fileID: 11400000, guid: 908a32d69f3ee0a448e02660d03a704f, type: 2}
   targetFloorIndex: 2
   targetSpawnPoint: {fileID: 8064509713096471317}
+  noiseEmitter: {fileID: 0}
 --- !u!61 &3564828976716302315
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33649,6 +33650,7 @@ MonoBehaviour:
   inputSo: {fileID: 11400000, guid: 908a32d69f3ee0a448e02660d03a704f, type: 2}
   targetFloorIndex: 2
   targetSpawnPoint: {fileID: 6178262046698835169}
+  noiseEmitter: {fileID: 0}
 --- !u!61 &2984266089835816573
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34141,6 +34143,7 @@ MonoBehaviour:
   inputSo: {fileID: 11400000, guid: 908a32d69f3ee0a448e02660d03a704f, type: 2}
   targetFloorIndex: 1
   targetSpawnPoint: {fileID: 8400382371588602351}
+  noiseEmitter: {fileID: 0}
 --- !u!61 &40030709242267335
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -100442,6 +100445,7 @@ MonoBehaviour:
   inputSo: {fileID: 11400000, guid: 908a32d69f3ee0a448e02660d03a704f, type: 2}
   targetFloorIndex: 3
   targetSpawnPoint: {fileID: 4762454415103874032}
+  noiseEmitter: {fileID: 0}
 --- !u!61 &8804650587342183194
 BoxCollider2D:
   m_ObjectHideFlags: 0

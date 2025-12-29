@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using _00._Work.Resources._02._Codes.Utils; // InputSo 경로
+using _00._Work.Resources._02._Codes.Utils;
+using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems; 
 
 namespace PBG_01_PUSE
 {
@@ -7,8 +8,10 @@ namespace PBG_01_PUSE
     {
         [Header("Settings")]
         [SerializeField] private InputSo inputSo;
-        [Tooltip("이 문이 몇 층 문인지 설정하세요 (1, 2, 3)")]
-        [Range(1, 3)] [SerializeField] private int floorNumber = 1; // 층수 설정 추가
+        [Tooltip("이 문이 몇 층 문인지 설정 (1, 2, 3)")]
+        [Range(1, 3)] [SerializeField] private int floorNumber = 1; 
+        
+        [SerializeField] private NoiseEmitter noiseEmitter;
         
         private bool isPlayerInRange = false;
         private Transform playerTransform;
@@ -16,31 +19,44 @@ namespace PBG_01_PUSE
         private void OnEnable()
         {
             if (inputSo != null) inputSo.OnInteractionKeyPressed += HandleInteraction;
+            if (Elevator.Instance != null)
+                Elevator.Instance.OnFloorChanged += OnElevatorMoved;
         }
 
         private void OnDisable()
         {
             if (inputSo != null) inputSo.OnInteractionKeyPressed -= HandleInteraction;
+            if (Elevator.Instance != null)
+                Elevator.Instance.OnFloorChanged -= OnElevatorMoved;
+        }
+
+        private void OnElevatorMoved()
+        {
+            if (noiseEmitter != null) noiseEmitter.EmitOnce();
         }
 
         private void HandleInteraction()
         {
-            // 플레이어가 범위 안에 있고, 엘리베이터 매니저가 존재할 때
             if (isPlayerInRange && Elevator.Instance != null)
             {
-                // [추가된 로직] 현재 층(이 문이 있는 층)에 전력이 들어왔는지 확인
-                if (GeneratorManager.Instance != null)
+                // 1. 전력 체크
+                if (GeneratorManager.Instance != null && !GeneratorManager.Instance.IsFloorPowered(floorNumber))
                 {
-                    if (!GeneratorManager.Instance.IsFloorPowered(floorNumber))
-                    {
-                        Debug.Log($"[ElevatorDoor] {floorNumber}층 전력이 복구되지 않아 문이 열리지 않습니다.");
-                        // 전력이 없으면 여기서 함수 종료 (UI 안 뜸)
-                        return; 
-                    }
+                    Debug.Log($"[ElevatorDoor] {floorNumber}층 전력 부족.");
+                    return; 
                 }
 
-                // 전력이 있을 때만 UI 열기 요청
-                Elevator.Instance.OpenUI(playerTransform);
+                // 2. 엘리베이터 호출 로직
+                // "엘리베이터야, 이 층(floorNumber)으로 와라. 그리고 도착하면 {} 안의 내용을 실행해라"
+                Elevator.Instance.CallElevator(floorNumber, () => 
+                {
+                    // 도착 후 실행될 코드 (콜백)
+                    // 플레이어가 여전히 문 앞에 기다리고 있다면 UI를 열어줌
+                    if (isPlayerInRange)
+                    {
+                        Elevator.Instance.OpenUI(playerTransform);
+                    }
+                });
             }
         }
 
@@ -60,8 +76,11 @@ namespace PBG_01_PUSE
                 isPlayerInRange = false;
                 playerTransform = null;
                 
-                // 범위 벗어나면 UI 닫기
-                if (Elevator.Instance != null) Elevator.Instance.CloseUI();
+                // 범위 벗어나면 UI 닫고, 플레이어 탑승 상태 해제
+                if (Elevator.Instance != null) 
+                {
+                    Elevator.Instance.PlayerExited();
+                }
             }
         }
     }

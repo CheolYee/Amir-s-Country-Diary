@@ -68,6 +68,8 @@ namespace _00._Work.Resources._02._Codes
             BuildTables();
             LoadSettings();
             ApplyVolume();
+            
+            PlayBgm(BgmId.Normal);
         }
 
         private void BuildTables()

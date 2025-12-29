@@ -1,5 +1,6 @@
 ﻿using _00._Work.Resources._02._Codes.Utils;
 using _00._Work.Resources._04._Templates.FadeManager;
+using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
 using _00._Work.WorkSpace.Soso7194._01.Scripts.Manager;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -17,9 +18,13 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Stair
         
         [Tooltip("이동 후 플레이어가 서 있을 위치")]
         public Transform targetSpawnPoint;
+        
+        public NoiseEmitter noiseEmitter;
 
         private bool _isPlayerNearby = false;
         private GameObject _playerObject;
+        
+        private bool _interactionLocked;
 
         // 1. 이벤트 구독 (켜질 때)
         private void OnEnable()
@@ -42,30 +47,46 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Stair
         // 3. 상호작용 키가 눌렸을 때 실행될 함수
         private void HandleInteraction()
         {
-            // 플레이어가 근처에 있고, 이동 중이 아닐 때만 실행
+            if (_interactionLocked) return;
+
+            // 전환 중이면 무시
+            if (FadeManager.Instance != null && FadeManager.Instance.IsTransitioning) return;
+
             if (_isPlayerNearby && _playerObject != null)
-            {
                 ClimbStair();
-            }
         }
 
         private void ClimbStair()
         {
             if (targetSpawnPoint == null) return;
+            
 
-            // 페이드 아웃 -> 이동 -> 페이드 인
+            _interactionLocked = true;
+
+            noiseEmitter.EmitOnce();
+            
+            // 전환 끝나면 잠금 해제
+            if (FadeManager.Instance != null)
+                FadeManager.Instance.OnTransitionFinished += UnlockInteraction;
+
             FadeManager.Instance.FadeIn(() =>
             {
-                // 플레이어 이동 (물리 버그 방지 + 카메라 컷)
                 TeleportPlayer(_playerObject, targetSpawnPoint.position);
-                
-                // 바운더리 변경 (CameraBoundManager 사용)
                 CameraBoundManager.Instance.ChangeCameraBound(targetFloorIndex);
-                
-                TeleportPlayer( _playerObject, targetSpawnPoint.position);
-                
+
+                // (여기 TeleportPlayer 두 번 호출은 보통 불필요해 보여서 하나만 권장)
+                // TeleportPlayer(_playerObject, targetSpawnPoint.position);
+
                 FadeManager.Instance.FadeOut();
             });
+        }
+        
+        private void UnlockInteraction()
+        {
+            _interactionLocked = false;
+
+            if (FadeManager.Instance != null)
+                FadeManager.Instance.OnTransitionFinished -= UnlockInteraction;
         }
 
         // 안전한 이동 함수 (카메라 울렁거림 방지 포함)

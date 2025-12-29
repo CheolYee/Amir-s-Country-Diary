@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using _00._Work.Resources._02._Codes.Utils;
+using _00._Work.Resources._04._Templates.FadeManager;
 using _00._Work.WorkSpace.CheolYee._02._Codes.Agents;
 using _00._Work.WorkSpace.CheolYee._02._Codes.CameraSystems;
 using _00._Work.WorkSpace.CheolYee._02._Codes.Players;
@@ -34,6 +35,9 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
         [SerializeField] private GameObject _parent;
         
         private bool _isUsingLockPick = false; 
+        
+        private bool _interactionLocked;
+
 
         // 물리 제어용 변수
         private AgentMover _mover;
@@ -48,9 +52,13 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
         {
             if (inputSo != null)
                 inputSo.OnInteractionKeyPressed -= HandleInteraction;
-            
+
             if (_lockPick != null)
                 _lockPick.OnUnlocked -= UnlockDoor;
+
+            // ✅ 혹시 비활성화 중에 이벤트 남아있으면 제거
+            if (FadeManager.Instance != null)
+                FadeManager.Instance.OnTransitionFinished -= UnlockInteraction;
         }
 
         public void InitializeLock(bool needLock)
@@ -88,18 +96,25 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
 
         private void HandleInteraction()
         {
-            // 상호작용 중이거나 플레이어가 없으면 무시
+            if (_interactionLocked) return;
+
+            // 락픽 중이면 기존 로직대로 차단
             if (_isUsingLockPick || !_isPlayerNearby || _playerObject == null) return;
 
-            // 잠겨있고 락픽 스크립트가 있다면 락픽 실행
+            // 페이드/전환 중이면 차단
+            if (FadeManager.Instance != null && FadeManager.Instance.IsTransitioning) return;
+
+            // 잠겨있으면 락픽 진입(기존 유지)
             if (_isLocked && _lockPick != null)
             {
-                // [수정] 고장 여부(_isBroken)를 체크하지 않고 바로 실행합니다.
                 StartLockPicking();
                 _lockPick.ShowLockPick();
                 StartCoroutine(CheckLockPickState());
                 return;
             }
+
+            // 여기부터는 “이동/출입” 계열 → 전환 잠금
+            LockInteractionUntilFadeEnds();
 
             noiseEmitter.EmitOnce();
             switch (type)
@@ -107,15 +122,29 @@ namespace _00._Work.WorkSpace.Soso7194._01.Scripts.Interaction.Door
                 case DoorType.Enter:
                     DoorManager.Instance.EnterRoom(_playerObject, roomIndexToGo);
                     break;
-
                 case DoorType.Move:
                     CameraBoundManager.Instance.ChangeCameraBound(floorIndexToGo);
                     break;
-
                 case DoorType.Exit:
                     DoorManager.Instance.ExitRoom(_playerObject);
                     break;
             }
+        }
+        
+        private void LockInteractionUntilFadeEnds()
+        {
+            _interactionLocked = true;
+
+            if (FadeManager.Instance != null)
+                FadeManager.Instance.OnTransitionFinished += UnlockInteraction;
+        }
+        
+        private void UnlockInteraction()
+        {
+            _interactionLocked = false;
+
+            if (FadeManager.Instance != null)
+                FadeManager.Instance.OnTransitionFinished -= UnlockInteraction;
         }
 
         private void StartLockPicking()

@@ -73,6 +73,7 @@ namespace _00._Work.Resources._02._Codes
                 return;
             }
             Time.timeScale = 1f;
+            SoundManager.Instance.PlayBgm(BgmId.Normal);
 
             FadeManager.Instance?.FadeToSceneAsync(mainMenuSceneIndex);
         }

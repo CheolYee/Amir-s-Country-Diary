@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fee5b4ad2a40f2ba6bd410f2ef0afa, type: 3}
+  m_Name: StairNoise
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: ce772b4fd78a82c43b89ff46ef798240, type: 3}
+  clipSelectMode: 0
+  avoidImmediateRepeat: 1
+  loop: 0
+  pulseInterval: 0.2
+  loudness: 1
+  maxRange: 20
+  halfDistance: 5
+  type: 2
+  tag: 1
+  uiGainMultiplier: 0.5
+  cameraGainMultiplier: 1.6
+  affectUiNoiseMeter: 1

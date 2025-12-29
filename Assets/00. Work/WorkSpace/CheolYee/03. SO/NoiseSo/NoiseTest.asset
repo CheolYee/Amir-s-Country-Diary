@@ -19,9 +19,10 @@ MonoBehaviour:
   loop: 0
   pulseInterval: 0.35
   loudness: 1
-  maxRange: 12
+  maxRange: 20
   halfDistance: 5
   type: 0
   tag: 4
-  uiGainMultiplier: 14.06
+  uiGainMultiplier: 10
   cameraGainMultiplier: 1
+  affectUiNoiseMeter: 1

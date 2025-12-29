@@ -138,6 +138,9 @@ namespace _00._Work.WorkSpace.CheolYee._02._Codes.JumpScares
 
             if (raiseGameOverEvent)
                 Bus<GameOverEvent>.Raise(new GameOverEvent());
+            
+            Die.Instance.OnDie();
+            SoundManager.Instance.PlayBgm(BgmId.Normal);
 
             // 필요하면 UI도 같이 사라지게
             yield return FadeGroupRealtime(1f, 0f, 0.1f);
