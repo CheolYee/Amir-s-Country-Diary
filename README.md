@@ -1,2 +1,2 @@
-# Amir-s-Country-Diary
+# SHUTTER
 게임잼
